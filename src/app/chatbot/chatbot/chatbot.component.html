@@ -1,0 +1,192 @@
+<div *ngIf="config?.business?.activated">
+  <div class="chat-tooltip" *ngIf="showTooltip && config.ui.showTooltip">Hai domande su menù, orari o prenotazioni?
+  </div>
+  <div class="chat-fab" (click)="toggleChat()">💬</div>
+  <div class="chatbox" *ngIf="open">
+    <div class="chat-header">
+      <span>{{ config.business.nomeAssistente }}</span>
+
+      <div class="lang-dropdown" *ngIf="config.business?.multiLanguage">
+        <button class="lang-trigger" (click)="toggleLangMenu()">
+          {{ lang === 'it' ? '🇮🇹 Italiano' : '🇬🇧 English' }}
+          <span class="arrow">▾</span>
+        </button>
+
+        <div class="lang-menu" *ngIf="langMenuOpen">
+          <div class="lang-item" [class.active]="lang === 'it'" (click)="setLang('it')">
+            🇮🇹 Italiano
+          </div>
+
+          <div class="lang-item" [class.active]="lang === 'en'" (click)="setLang('en')">
+            🇬🇧 English
+          </div>
+        </div>
+      </div>
+      <button (click)="toggleChat()">✕</button>
+    </div>
+
+
+
+    <div class="chat-body" #chatBody>
+      <div *ngFor="let msg of messages; let i = index" class="message-row" [ngClass]="msg.sender">
+        <div class="message-wrapper">
+          <div class="message" [ngClass]="msg.sender">
+            <div *ngIf="msg.isHtml; else plainText" [innerHTML]="msg.text"></div>
+            <ng-template #plainText>{{ msg.text }}</ng-template>
+          </div>
+
+          <div class="quick-actions"
+            *ngIf="msg.sender === 'bot' && i === messages.length - 1 && config.ui.showQuickActions">
+            <button *ngIf="config.booking.enabled && showQuickActions" (click)="bookClick1()">📅
+              {{config.frasi[lang].prenota}}</button>
+            <button *ngIf="showQuickActions" (click)="showHours()">🕒 {{config.frasi[lang].orari}}</button>
+            <button *ngIf="showQuickActions" (click)="openMaps()">📍 {{config.frasi[lang].posizione}}</button>
+            <button *ngIf="showQuickActions" (click)="callNumber()">📞 {{config.frasi[lang].chiama}}</button>
+
+
+            <div *ngIf="showMethod" class="booking-methods">
+
+              <div class="methods-grid">
+                <div *ngFor="let method of getBookingMethods()">
+                  <ng-container [ngSwitch]="method.type">
+
+                    <button *ngSwitchCase="'thefork'" class="method-btn thefork" (click)="openExternal(method.url)">
+                      <span class="icon">🍴</span>
+                      <span class="label">{{ method.label }}</span>
+                    </button>
+
+                    <button *ngSwitchCase="'phone'" class="method-btn phone" (click)="callNumber()">
+                      <span class="icon">☎️</span>
+                      <span class="label">{{config.frasi[lang].chiama}}</span>
+                    </button>
+
+                    <button *ngSwitchCase="'whatsapp'" class="method-btn whatsapp" (click)="bookNow()">
+                      <span class="icon">📱</span>
+                      <span class="label">{{ method.label }}</span>
+                    </button>
+
+                  </ng-container>
+                </div>
+              </div>
+
+              <button class="cancel-btn" (click)="cancelMethod()">
+                ❌ {{config.frasi[lang].annulla}}
+              </button>
+
+            </div>
+            <!-- Mini form prenotazione -->
+            <!-- Mini form prenotazione -->
+
+            <form *ngIf="showBookingForm && config.booking.enabled" [formGroup]="bookingForm"
+              (ngSubmit)="sendBookingWhatsApp()" class="booking-form">
+              <!-- Nome -->
+              <label class="form-label">
+                {{config.frasi[lang].nome}}
+                <span *ngIf="config.booking.fields.name.required" class="required">*</span></label>
+              <input type="text" formControlName="name" placeholder={{config.frasi[lang].nome}} />
+              <div class="field-error" *ngIf="bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched">
+                <span class="icon">⚠️</span>
+                {{config.errors[lang].nome}}
+              </div>
+
+              <!-- Telefono -->
+              <!-- Telefono con prefisso obbligatorio -->
+              <label class="form-label">
+                {{config.frasi[lang].numero}}
+                <span *ngIf="config.booking.fields.phone.required" class="required">*</span>
+              </label>
+
+              <div class="phone-field">
+
+                <div class="phone-input-container">
+
+                  <!-- Prefisso custom -->
+                  <div class="prefix-selector" (click)="togglePrefixDropdown()">
+                    <span class="flag">{{ selectedPrefix.flag }}</span>
+                    <span class="code">{{ selectedPrefix.code }}</span>
+                    <span class="arrow">▾</span>
+                  </div>
+
+                  <!-- Dropdown -->
+                  <div class="prefix-dropdown" *ngIf="showPrefixDropdown">
+                    <div class="prefix-option" *ngFor="let p of phonePrefixes" (click)="selectPrefix(p)">
+                      {{ p.flag }} {{ p.name }} ({{ p.code }})
+                    </div>
+                  </div>
+
+                  <!-- Numero -->
+                  <input type="tel" formControlName="phone" placeholder="347 1234567" inputmode="numeric" />
+
+                </div>
+
+              </div>
+
+
+              <div class="field-error" *ngIf="
+                bookingForm.get('phone')?.errors?.['required'] && bookingForm.get('phone')?.touched
+                ">
+                <span class="icon">⚠️</span> {{config.errors[lang].numero}}
+              </div>
+
+              <div class="field-error" *ngIf="bookingForm.errors?.['invalidPhone']">
+                <span class="icon">⚠️</span> {{config.errors[lang].numNonValido}}
+              </div>
+
+
+
+              <!-- Data e ora -->
+              <label class="form-label">
+                {{config.frasi[lang].data}}
+                <span *ngIf="config.booking.fields.datetime.required" class="required">*</span></label>
+              <input type="datetime-local" formControlName="datetime" />
+
+              <div *ngIf="datetimeErrorMessage" class="field-error">
+                <span class="icon">⚠️</span>
+                <span class="text">{{ datetimeErrorMessage }}</span>
+              </div>
+
+              <!-- Note -->
+              <label class="form-label">
+                {{config.frasi[lang].note}} <span *ngIf="config.booking.fields.notes.required" class="required">*</span>
+              </label>
+              <input type="text" formControlName="notes" placeholder="Note" />
+              <div class="field-error" *ngIf="
+                bookingForm.get('notes')?.errors?.['required'] && bookingForm.get('notes')?.touched
+              ">
+                <span class="icon">⚠️</span> {{config.errors[lang].note}}
+              </div>
+              <!-- Pulsanti -->
+              <div class="booking-buttons">
+                <button type="submit" class="whatsapp" [disabled]="!bookingForm.valid">
+                  <img src="/whatsapp.svg" alt="WhatsApp" />
+                  {{config.frasi[lang].invia}}
+                </button>
+
+                <button type="button" class="cancel" (click)="cancelBooking()">❌ {{config.frasi[lang].annulla}}</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Animazione typing raffinata -->
+      <div class="message-row bot" *ngIf="botTyping">
+        <div class="message-wrapper">
+          <div class="message typing-bubble">
+            <div class="dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input [(ngModel)]="userInput" placeholder="Scrivi un messaggio..." (keyup.enter)="sendMessage()" />
+      <button (click)="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>

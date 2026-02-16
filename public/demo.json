@@ -1,0 +1,1031 @@
+{
+    "business": {
+        "id": "demo-001",
+        "name": "Attività Demo",
+        "nomeAssistente": "Assistente DEMO",
+        "activated": true,
+        "type": "ristorante",
+        "description": "Attività demo per chatbot",
+        "language": "it",
+        "multiLanguage": true,
+        "timezone": "Europe/Rome"
+    },
+    "contact": {
+        "address": "Via Roma 123, Milano",
+        "phone": "+39 371 423 1978",
+        "email": "info@attivitademo.it",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano",
+        "website": "https://www.attivitademo.it"
+    },
+    "openingHours": {
+        "monday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 12,
+                    "openM": 0,
+                    "closeM": 0
+                },
+                {
+                    "openH": 18,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "tuesday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 12,
+                    "openM": 0,
+                    "closeM": 0
+                },
+                {
+                    "openH": 18,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "wednesday": {
+            "closed": true
+        },
+        "thursday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "friday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 23,
+                    "openM": 0,
+                    "closeM": 30
+                }
+            ]
+        },
+        "saturday": {
+            "slots": [
+                {
+                    "openH": 10,
+                    "closeH": 23,
+                    "openM": 0,
+                    "closeM": 30
+                }
+            ]
+        },
+        "sunday": {
+            "closed": true
+        }
+    },
+    "booking": {
+        "enabled": true,
+        "methods": [
+            {
+                "type": "thefork",
+                "label": "TheFork",
+                "enabled": true,
+                "url": "https://www.thefork.it/ristorante/nome-ristorante"
+            },
+            {
+                "type": "whatsapp",
+                "label": "WhatsApp",
+                "enabled": true
+            },
+            {
+                "type": "phone",
+                "label": "chiama",
+                "enabled": true
+            }
+        ],
+        "whatsappNumber": "+39 371 423 1978",
+        "fields": {
+            "name": {
+                "required": true
+            },
+            "phone": {
+                "required": true
+            },
+            "datetime": {
+                "required": true
+            },
+            "notes": {
+                "required": false
+            }
+        },
+        "rules": {
+            "minAdvanceMinutes": 30,
+            "maxDaysInAdvance": 30
+        }
+    },
+    "features": {
+        "delivery": true,
+        "takeaway": true,
+        "onlinePayments": false
+    },
+    "dietaryOptions": {
+        "vegetarian": true,
+        "vegan": false,
+        "glutenFree": true
+    },
+    "payments": {
+        "cash": true,
+        "creditCard": true,
+        "debitCard": true,
+        "satispay": true,
+        "paypal": false
+    },
+    "menu": {
+        "hasMenu": true,
+        "menuUrl": "/menu.pdf",
+        "priceFrom": 6
+    },
+    "keywords": {
+        "it": {
+            "prezzi": [
+                "prezzi",
+                "prezzo",
+                "quanto costa",
+                "quanto viene",
+                "costo",
+                "costi",
+                "menu",
+                "menù",
+                "listino",
+                "tariffe",
+                "prezzi pizze",
+                "menu pizze",
+                "quanto costa una pizza",
+                "quanto costa il menu",
+                "avete il menu con i prezzi?",
+                "mi dite i prezzi?",
+                "vorrei vedere il menu"
+            ],
+            "orari": [
+                "orari",
+                "orario",
+                "apertura",
+                "chiusura",
+                "aperto",
+                "aperti",
+                "quando aprite",
+                "quando chiudete",
+                "siete aperti",
+                "oggi siete aperti",
+                "a che ora aprite",
+                "a che ora chiudete",
+                "a che ora siete aperti",
+                "fino a che ora siete aperti",
+                "che orari fate",
+                "quali sono gli orari",
+                "siete aperti stasera"
+            ],
+            "indirizzo": [
+                "indirizzo",
+                "dove siete",
+                "dove si trova",
+                "dove vi trovate",
+                "posizione",
+                "location",
+                "come arrivare",
+                "come ci arrivo",
+                "come ci si arriva",
+                "dove vi trovo",
+                "in che zona siete",
+                "qual è l'indirizzo",
+                "mi mandi la posizione",
+                "avete google maps",
+                "maps"
+            ],
+            "prenotazione": [
+                "prenotazione",
+                "prenotare",
+                "voglio prenotare",
+                "vorrei prenotare",
+                "prenota",
+                "riservare",
+                "riservare un tavolo",
+                "voglio riservare un tavolo",
+                "booking",
+                "tavolo",
+                "un tavolo per due",
+                "avete posti",
+                "avete disponibilità",
+                "ci sono posti",
+                "posso prenotare",
+                "possiamo prenotare",
+                "vorrei un tavolo",
+                "prenotare per stasera",
+                "prenotare per domani"
+            ],
+            "saluto": [
+                "ciao",
+                "buongiorno",
+                "buonasera",
+                "salve",
+                "hey",
+                "hi",
+                "hello",
+                "ciaoo",
+                "ehi",
+                "ei",
+                "oi"
+            ],
+            "delivery": [
+                "asporto",
+                "da asporto",
+                "take away",
+                "consegna",
+                "a domicilio",
+                "porta a casa",
+                "ordinare a casa",
+                "ordino da asporto",
+                "fate consegne",
+                "fate asporto",
+                "posso ordinare a domicilio",
+                "avete delivery",
+                "consegna a domicilio",
+                "servizio a domicilio"
+            ],
+            "pagamenti": [
+                "pagamento",
+                "pagare",
+                "pos",
+                "come posso pagare",
+                "metodi di pagamento",
+                "accettate carte",
+                "accettate carta",
+                "carta di credito",
+                "bancomat",
+                "posso pagare con carta",
+                "accettate contanti",
+                "contanti",
+                "satispay",
+                "paypal",
+                "posso pagare con paypal",
+                "posso pagare con satispay"
+            ],
+            "insulti": [
+                "fanculo",
+                "vaffanculo",
+                "vaffa",
+                "stronzo",
+                "idiota",
+                "stupido",
+                "scemo",
+                "coglione",
+                "zitto",
+                "stai zitto",
+                "cazzo",
+                "merda",
+                "testa di",
+                "non servi a niente",
+                "fai schifo"
+            ],
+            "ringraziamenti": [
+                "grazie",
+                "grazie mille",
+                "thanks",
+                "thank you",
+                "ti ringrazio",
+                "gentilissimo",
+                "perfetto grazie",
+                "ok grazie"
+            ],
+            "social": [
+                "instagram",
+                "facebook",
+                "social",
+                "seguici",
+                "profilo",
+                "pagina",
+                "telegram",
+                "messaggi",
+                "messaggiaci",
+                "link social",
+                "dove trovarvi online"
+            ],
+            "eventi": [
+                "eventi",
+                "serate",
+                "live",
+                "concerto",
+                "evento speciale",
+                "serata musicale",
+                "degustazione",
+                "show",
+                "musica dal vivo",
+                "aperitivo",
+                "festa",
+                "serata a tema"
+            ],
+            "offerte": [
+                "offerta",
+                "offerte",
+                "promozioni",
+                "sconti",
+                "coupon",
+                "deal",
+                "happy hour",
+                "offerta del giorno",
+                "menu del giorno",
+                "offerta del mese",
+                "pizza scontata",
+                "pizza gratis",
+                "menu speciale",
+                "pizza promozione",
+                "promo",
+                "piatto del giorno",
+                "combo",
+                "ristorante offerte",
+                "menu di oggi",
+                "cosa ce oggi",
+                "cosa c'è oggi"
+            ],
+            "allergeni": [
+                "vegetariano",
+                "vegetariana",
+                "vegano",
+                "vegana",
+                "senza glutine",
+                "glutine",
+                "celiaco",
+                "celiaci",
+                "lattosio",
+                "senza lattosio",
+                "allergia",
+                "allergie",
+                "allergeni",
+                "intolleranza",
+                "intolleranze",
+                "noci",
+                "arachidi",
+                "soia",
+                "uova",
+                "pesce",
+                "frutti di mare",
+                "avete opzioni vegetariane",
+                "avete opzioni vegane",
+                "ci sono piatti senza glutine",
+                "posso mangiare se sono celiaco",
+                "sono allergico a"
+            ],
+            "politiche": [
+                "regole",
+                "politiche",
+                "consentito",
+                "ammesso",
+                "vietato",
+                "animali",
+                "cane",
+                "cani",
+                "gatto",
+                "fumare",
+                "fumo",
+                "fumatori",
+                "tavoli esterni",
+                "dehors",
+                "fuori",
+                "aria condizionata",
+                "climatizzato",
+                "riscaldamento",
+                "bambini"
+            ],
+            "logistica": [
+                "parcheggio",
+                "posteggio",
+                "dove parcheggiare",
+                "c'è parcheggio",
+                "avete parcheggio",
+                "parcheggio vicino",
+                "ztl",
+                "zona traffico limitato",
+                "posso arrivare in macchina",
+                "si può parcheggiare vicino",
+                "accessibile",
+                "accesso disabili",
+                "è accessibile ai disabili",
+                "carrozzina",
+                "accesso carrozzina",
+                "passeggino",
+                "ingresso",
+                "ci sono scale",
+                "c'è ascensore",
+                "piano terra"
+            ],
+            "tempi": [
+                "attesa",
+                "quanto si aspetta",
+                "quanto tempo si aspetta",
+                "c'è da aspettare",
+                "quanto tempo di attesa",
+                "è pieno",
+                "è affollato",
+                "c'è coda",
+                "quanto tempo per un tavolo",
+                "ci vuole molto tempo",
+                "qual è l'orario migliore",
+                "quando è meno affollato",
+                "quando conviene venire"
+            ],
+            "contatti": [
+                "telefono",
+                "numero",
+                "numero di telefono",
+                "come posso contattarvi",
+                "contatti",
+                "email",
+                "whatsapp",
+                "messaggi",
+                "scrivervi",
+                "come vi contatto",
+                "posso chiamare"
+            ]
+        },
+        "en": {
+            "prezzi": [
+                "prices",
+                "price",
+                "how much",
+                "how much is it",
+                "how much does a pizza cost",
+                "how much is a pizza",
+                "menu",
+                "menu prices",
+                "price list",
+                "can I see the menu?",
+                "do you have a menu?",
+                "can I see the prices?",
+                "what are your prices?",
+                "how much does it cost?",
+                "how much is the menu?"
+            ],
+            "orari": [
+                "opening hours",
+                "hours",
+                "what are your opening hours",
+                "what time do you open",
+                "what time do you close",
+                "are you open today",
+                "are you open tonight",
+                "what time are you open until",
+                "when do you open",
+                "when do you close",
+                "are you open now",
+                "are you open this evening",
+                "what time do you open today"
+            ],
+            "indirizzo": [
+                "address",
+                "where are you",
+                "where are you located",
+                "where is the restaurant",
+                "how can I get there",
+                "how do I get there",
+                "directions",
+                "location",
+                "send me the address",
+                "can you send me the location",
+                "google maps",
+                "are you near",
+                "what is your address",
+                "how can I find you"
+            ],
+            "prenotazione": [
+                "booking",
+                "book",
+                "book a table",
+                "I want to book",
+                "I would like to book",
+                "I'd like to book a table",
+                "can I book a table",
+                "can we book a table",
+                "do you have availability",
+                "is there availability",
+                "is there a table available",
+                "table for two",
+                "book for tonight",
+                "book for tomorrow",
+                "reservation",
+                "make a reservation",
+                "I'd like to make a reservation"
+            ],
+            "saluto": [
+                "hi",
+                "hello",
+                "hey",
+                "good morning",
+                "good evening",
+                "good afternoon",
+                "hi there",
+                "hello there",
+                "hey!",
+                "hi!"
+            ],
+            "delivery": [
+                "delivery",
+                "takeaway",
+                "take away",
+                "do you do delivery",
+                "do you offer delivery",
+                "do you have delivery",
+                "can I order for delivery",
+                "can I order takeaway",
+                "do you do takeaway",
+                "home delivery",
+                "deliver to home",
+                "can I get it delivered"
+            ],
+            "pagamenti": [
+                "payment",
+                "how can I pay",
+                "payment methods",
+                "do you accept cards",
+                "do you accept credit cards",
+                "can I pay by card",
+                "can I pay with card",
+                "cash",
+                "do you accept cash",
+                "credit card",
+                "debit card",
+                "contactless payment",
+                "do you accept paypal",
+                "paypal"
+            ],
+            "insulti": [
+                "fuck you",
+                "shut up",
+                "idiot",
+                "stupid",
+                "dumb",
+                "you are useless",
+                "you suck",
+                "asshole",
+                "bastard",
+                "bullshit",
+                "fuck off"
+            ],
+            "ringraziamenti": [
+                "thanks",
+                "thank you",
+                "thanks a lot",
+                "thank you very much",
+                "perfect thanks",
+                "ok thanks",
+                "great thanks",
+                "many thanks"
+            ],
+            "social": [
+                "instagram",
+                "facebook",
+                "social media",
+                "follow you",
+                "do you have instagram",
+                "do you have facebook",
+                "social links",
+                "where can I find you online"
+            ],
+            "eventi": [
+                "events",
+                "live music",
+                "concert",
+                "special event",
+                "theme night",
+                "wine tasting",
+                "aperitif",
+                "party",
+                "do you have events",
+                "any events this weekend",
+                "are there any special events",
+                "live show"
+            ],
+            "offerte": [
+                "offers",
+                "offer",
+                "promotion",
+                "promotions",
+                "discount",
+                "discounts",
+                "special offer",
+                "any offers",
+                "do you have any offers",
+                "any promotions",
+                "happy hour",
+                "daily special",
+                "special menu",
+                "any deals",
+                "deal"
+            ],
+            "allergeni": [
+                "vegetarian",
+                "vegan",
+                "gluten free",
+                "gluten-free",
+                "celiac",
+                "lactose",
+                "lactose free",
+                "allergy",
+                "allergies",
+                "intolerance",
+                "intolerances",
+                "nuts",
+                "peanuts",
+                "soy",
+                "eggs",
+                "fish",
+                "seafood",
+                "do you have vegetarian options",
+                "do you have vegan options",
+                "do you have gluten free options",
+                "I'm allergic to",
+                "I have an allergy",
+                "is this gluten free"
+            ],
+            "politiche": [
+                "policies",
+                "rules",
+                "are pets allowed",
+                "are dogs allowed",
+                "can I bring my dog",
+                "pets allowed",
+                "can we smoke",
+                "can we smoke",
+                "is smoking allowed",
+                "smoking area",
+                "outdoor seating",
+                "do you have outdoor tables",
+                "air conditioning",
+                "is the place air conditioned",
+                "heating",
+                "are children allowed",
+                "is it kid friendly"
+            ],
+            "logistica": [
+                "parking",
+                "is there parking",
+                "do you have parking",
+                "where can I park",
+                "parking nearby",
+                "ztl",
+                "restricted traffic zone",
+                "can I arrive by car",
+                "is there parking near you",
+                "wheelchair access",
+                "is it wheelchair accessible",
+                "accessible entrance",
+                "is there an elevator",
+                "are there stairs",
+                "ground floor",
+                "is it accessible"
+            ],
+            "tempi": [
+                "waiting time",
+                "how long is the wait",
+                "is there a wait",
+                "is it busy",
+                "is it crowded",
+                "how long do we have to wait",
+                "is there a queue",
+                "how long for a table",
+                "best time to come",
+                "when is it less busy",
+                "what is the best time to visit"
+            ],
+            "contatti": [
+                "phone",
+                "phone number",
+                "contact",
+                "contact details",
+                "how can I contact you",
+                "email",
+                "whatsapp",
+                "call you",
+                "can I call",
+                "how do I contact you"
+            ]
+        }
+    },
+    "responses": {
+        "it": {
+            "benvenuto": [
+                "👋 Ciao! Sono l’assistente virtuale del locale 😊\nTi aiuto con orari, prenotazioni, prezzi e info utili.\nChiedimi pure oppure usa i pulsanti qui sotto 👇"
+            ],
+            "saluto": [
+                "👋 Ciao! Benvenuto da noi!\n\nSe vuoi, posso aiutarti con:\n🍕 menù e prezzi\n📅 prenotazioni\n🕒 orari",
+                "😄 Buongiorno! Che bello vederti qui!\n\nDimmi pure se vuoi informazioni su:\n* il menù\n* gli orari\n* prenotazioni",
+                "👋 Ehi! Grazie per il saluto!\n\nSe vuoi, posso mostrarti il nostro menù, gli orari di apertura o aiutarti a prenotare un tavolo 😊"
+            ],
+            "prezzi": [
+                "🍕 Ehilà! Il nostro menù è pensato per soddisfare tutti i gusti.\n\nLe pizze partono da circa 6€, e troverai sia i classici intramontabili sia le nostre specialità creative.\n\n📄 Dai un’occhiata al menù completo con foto:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>\n\nSe vuoi, posso anche aiutarti a prenotare un tavolo 😉",
+                "😋 Vuoi scoprire cosa c’è di buono oggi?\n\nLe nostre pizze partono da circa 6€ e abbiamo sia classiche che sfiziose specialità.\n\n📄 Menù completo con immagini qui:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "🍕 Certo! Il nostro menù è vario e gustoso.\n\nI prezzi partono da circa 6€, così c’è un’opzione per tutti i gusti e tutte le tasche.\n\n📄 Guarda il menù completo con le foto qui:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "👀 Hai fame? Dai un’occhiata al nostro menù!\n\nPartiamo dai prezzi: le pizze più semplici da 6€, ma le specialità meritano davvero un’occhiata.\n\n📄 Menù con foto:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "🍕 Benissimo! Le nostre pizze iniziano da circa 6€ e il menù è pieno di delizie: dai classici alle novità più sfiziose.\n\n📄 Tutto il menù con immagini qui:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>"
+            ],
+            "orari": [
+                "🕒 I nostri orari di apertura\n\nLunedì – Venerdì: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: ❌ chiuso\n\n",
+                "⏰ Ecco quando siamo aperti:\n\nLun–Ven → 09:00 – 20:00\nSabato → 10:00 – 18:00\nDomenica → chiuso\n\n",
+                "📍 Ti dico subito i nostri orari:\n\n🟢 Lun–Ven: 09:00 – 20:00\n🟡 Sabato: 10:00 – 18:00\n🔴 Domenica: chiuso\n\n",
+                "😄 Ehi! Ecco quando puoi venirci a trovare:\n\n🕘 Lun–Ven: 09:00 – 20:00\n🕙 Sabato: 10:00 – 18:00\n❌ Domenica: chiuso\n\n 🍕",
+                "👀 Ti scrivo subito i nostri orari:\n\nLun–Ven: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: chiuso\n\n",
+                "🍕 Ecco quando siamo aperti per le tue pizze preferite:\n\nLun–Ven: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: ❌ chiuso\n\n"
+            ],
+            "indirizzo": [
+                "📍 Ci trovi qui:\n\nVia Roma 123, Milano\n\n🗺️ Apri direttamente su Maps:\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Apri su Google Maps</a>",
+                "📌 Ecco dove siamo:\n\nVia Roma 123 – Milano\n\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Indicazioni su Google Maps</a>",
+                "🚗 Ci trovi in questa posizione:\n\nVia Roma 123, Milano\n\n🧭 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Apri navigatore</a>"
+            ],
+            "prenotazione": [
+                "📅 Perfetto! scegli pure un metodo per prenotare:",
+                "🍕 Ottimo, vediamo di riservarti un tavolo! scegli un metodo per prenotare:",
+                "👍 Prenotazione semplice e veloce: scegli uno dei seguenti metodi:"
+            ],
+            "delivery": [
+                "🍕 Certo! Puoi ordinare le nostre pizze sia da asporto che con consegna a domicilio.\n\n📍 Per l'asporto, basta venire da noi all'orario che preferisci e ritirare il tuo ordine.\n\n🏠 Per la consegna a domicilio, puoi ordinare tramite i nostri partner (Just Eat, Glovo, Deliveroo) o chiamando direttamente in pizzeria.",
+                "😋 Hai voglia di pizza comodamente a casa?\nPossiamo fare sia asporto che delivery!\n\n📍 Asporto: vieni da noi e ritira il tuo ordine.\n🏡 Delivery: utilizza i nostri partner o chiama la pizzeria per ordinare a domicilio.\n\nDimmi se vuoi che ti invii il numero per ordinare direttamente 😉",
+                "📦 Pizza a casa o da portar via? Nessun problema!\n\n🍕 Asporto → ritira il tuo ordine direttamente in pizzeria.\n🏠 Delivery → disponibile tramite Just Eat, Glovo, Deliveroo o chiamando in pizzeria.",
+                "👀 Vuoi gustare le nostre pizze senza uscire di casa?\n\nPuoi scegliere:\n* Asporto: ritiri tu stesso da noi\n* Delivery: ricevi comodamente a casa tramite i nostri partner"
+            ],
+            "pagamenti": [
+                "💳 Puoi pagare come preferisci:\n* Contanti\n* Carte di credito e bancomat\n* Satispay\n* PayPal (solo ordini online tramite delivery) 🍕",
+                "🤑 Pagare da noi è semplice:\nAccettiamo contanti, carte di credito, bancomat e Satispay.\nSe ordini tramite delivery, puoi usare anche PayPal.",
+                "💰 Tutti i metodi di pagamento principali sono disponibili:\n* Contanti ✅\n* Carte / Bancomat ✅\n* Satispay ✅\n* PayPal (solo online) ✅",
+                "👀 Puoi pagare in diversi modi:\nContanti, carte, bancomat, Satispay e PayPal (solo ordini online). 🍕"
+            ],
+            "insulti": [
+                "😅 Eh eh, calma! Non è carino parlare così 😇",
+                "🙃 Uhm, direi che possiamo usare parole più gentili 😄",
+                "😬 Ops… meglio restare educati, dai! 😊",
+                "😏 Non è molto gentile, ma ti perdono 😇",
+                "😄 Dai, parliamo come persone civili e divertiamoci! 🍕",
+                "🤭 Scusa, non mi piace quando mi parlano così… ma resto amichevole!"
+            ],
+            "ringraziamenti": [
+                "😊 Grazie a te! È un piacere aiutarti.",
+                "😄 Di nulla! Quando vuoi, sono qui.",
+                "🙏 Figurati, felice di esserti stato utile!",
+                "🍕 Sempre a disposizione, grazie a te!",
+                "😉 Di niente! Se ti serve altro, sai dove trovarmi.",
+                "✨ Grazie a te! Buona giornata!"
+            ],
+            "fallback": [
+                "🤔 Mmm… non sono sicuro di aver capito bene, ma non preoccuparti!\nSono qui per aiutarti 😊\n\nPuoi chiedermi cose come:\n* 🕒 i nostri orari\n* 📅 prenotazioni di un tavolo\n* 🍕 menù e prezzi\n\nOppure usa i pulsanti qui sotto 👇",
+                "😄 Ops, forse non ho afferrato al volo!\nNessun problema, ti guido io 😎\n\nEcco cosa posso fare per te:\n* Prenotazioni 📅\n* Orari di apertura 🕒\n* Menù e prezzi 🍕\n\nDimmi pure cosa ti serve 👇",
+                "👋 Ciao! Nessun problema se non ci siamo capiti subito.\nSono qui per renderti tutto semplice 😄\n\nPuoi chiedermi:\n🍕 il menù e i prezzi\n📅 prenotare un tavolo\n🕒 sapere gli orari\n\nScrivimi quello che vuoi, oppure usa i pulsanti qui sotto 😊",
+                "😅 Mmm… credo di non aver capito bene, ma non ti preoccupare!\nTi aiuto io a trovare quello che cerchi 😉\n\nEcco alcune cose che posso fare:\n* Menù e prezzi 🍕\n* Prenotazioni 📅\n* Orari 🕒\n\nScrivi pure o clicca i pulsanti 👇"
+            ],
+            "social": [
+                "📱 Seguici sui nostri social per aggiornamenti, promo e curiosità! Instagram e Facebook sono sempre attivi.",
+                "🌐 Ecco i nostri canali social: Instagram 👉 <a href='https://www.instagram.com/tuopizzeria' target='_blank'>Apri Instagram</a>, Facebook 👉 <a href='https://www.facebook.com/tuopizzeria' target='_blank'>Apri Facebook</a>",
+                "💬 Vuoi contattarci direttamente? Scrivici su WhatsApp o Telegram e ti risponderemo subito!"
+            ],
+            "eventi": [
+                "🎶 Stiamo organizzando serate: questo sabato ci sarà serata a tema country",
+                "📅 Ecco le novità nel nostro locale: live, degustazioni e molto altro!"
+            ],
+            "offerte": [
+                "🎉 Ecco tutto quello che abbiamo per te oggi:\n\n🍕 **Menu del giorno**: pizza margherita, pizza funghi, insalata fresca e dolce del giorno.\n\n💰 **Offerta del giorno**: pizza margherita + bibita a soli 8€.\n\n✨ **Offerte del mese**: ogni venerdì 2 pizze al prezzo di 1, happy hour dalle 18 alle 20 con sconti su pizze e bevande, combo pizza + bibita + dolce a prezzo ridotto tutti i weekend.\n\nUn’ottima occasione per gustare le nostre specialità a prezzi convenienti!"
+            ],
+            "allergeni": [
+                "🌱 Abbiamo opzioni per tutti i gusti!\n\n🍕 Pizze vegetariane\n🌿 Pizze vegane\n🥖 Pizze senza glutine\n\n📄 Dai un’occhiata al menù completo per vedere tutte le varianti:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "😋 Non preoccuparti, pensiamo a tutti!\n\nOffriamo:\n* Pizze vegetariane 🍕\n* Pizze vegane 🌿\n* Pizze senza glutine 🥖\n\n📄 Tutto il menù completo con foto lo trovi qui:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "👀 Cerchi opzioni vegetariane, vegane o senza glutine?\nLe abbiamo tutte!\n\n🍕 Vegetariane\n🌿 Vegane\n🥖 Senza glutine\n\n📄 Scopri il menù completo qui:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>",
+                "🌟 Per chi ha esigenze particolari:\n* Pizze vegetariane 🍕\n* Pizze vegane 🌿\n* Pizze senza glutine 🥖\n\n📄 Menù completo con tutte le opzioni:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Apri il menù</a>"
+            ],
+            "politiche": [
+                "🐶 Gli animali di piccola taglia sono ammessi, purché tenuti al guinzaglio.\n\n🚭 Non è consentito fumare all’interno del locale, ma è possibile farlo nei tavoli esterni.\n\n🌿 Disponiamo di tavoli all’aperto in base alla stagione.",
+                "📋 Ecco alcune regole utili:\n\n🐕 Animali ammessi nei tavoli esterni\n🚭 Vietato fumare all’interno\n❄️ Locale climatizzato\n\nPer esigenze particolari, contatta il ristorante 😊",
+                "ℹ️ Il locale segue alcune semplici regole per il comfort di tutti:\n\n• Animali ammessi solo all’esterno\n• Locale climatizzato\n• Ambiente adatto anche ai bambini\n\nSiamo sempre disponibili per chiarimenti 👍"
+            ],
+            "logistica": [
+                "🚗 Il ristorante è facilmente raggiungibile in auto.\n\n🅿️ Nelle vicinanze sono disponibili parcheggi pubblici.\n♿ Il locale è accessibile anche a persone con mobilità ridotta.",
+                "📍 Come raggiungerci:\n\n• Parcheggi disponibili nelle vicinanze\n• Ingresso al piano terra\n• Accesso comodo anche con passeggini\n\nPer indicazioni precise puoi usare Google Maps 😊",
+                "🚙 Puoi arrivare comodamente in auto.\n\n🅿️ Parcheggio pubblico disponibile nelle vicinanze\n👶 Locale adatto anche a famiglie con bambini\n\nPer qualsiasi dubbio, contattaci direttamente 👍"
+            ],
+            "tempi": [
+                "⏳ I tempi di attesa possono variare in base all’orario e all’affluenza.\n\n📅 Consigliamo di prenotare per evitare eventuali attese.",
+                "🕰️ Nei momenti di maggiore affluenza potrebbe esserci un po’ di attesa.\n\nPer una migliore esperienza, è sempre consigliata la prenotazione 😊",
+                "ℹ️ I tempi di servizio dipendono dall’orario e dal numero di clienti presenti.\n\n📞 Per informazioni aggiornate in tempo reale, contatta il ristorante."
+            ],
+            "contatti": []
+        },
+        "en": {
+            "benvenuto": [
+                "👋 Hi! I’m the restaurant’s virtual assistant 😊\nI can help you with opening hours, reservations, prices and useful info.\nFeel free to ask me anything or use the buttons below 👇"
+            ],
+            "saluto": [
+                "👋 Hi! Welcome!\n\nIf you’d like, I can help you with:\n🍕 menu and prices\n📅 reservations\n🕒 opening hours",
+                "😄 Good morning! So nice to see you here!\n\nLet me know if you’d like information about:\n* the menu\n* opening hours\n* reservations",
+                "👋 Hey! Thanks for saying hi!\n\nIf you want, I can show you our menu, our opening hours or help you book a table 😊"
+            ],
+            "prezzi": [
+                "🍕 Hey there! Our menu is designed to satisfy every taste.\n\nPizzas start from around €6, with both timeless classics and creative specialties.\n\n📄 Take a look at the full menu with photos:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>\n\nIf you'd like, I can also help you book a table 😉",
+                "😋 Want to see what’s delicious today?\n\nOur pizzas start from around €6 and we offer both classic and special creations.\n\n📄 Full menu with images here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "🍕 Of course! Our menu is varied and tasty.\n\nPrices start from around €6, so there’s something for every taste and budget.\n\n📄 Check out the full menu with photos here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "👀 Feeling hungry? Take a look at our menu!\n\nStarting prices: simple pizzas from €6, but our specialties are definitely worth exploring.\n\n📄 Menu with photos:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "🍕 Great! Our pizzas start from around €6 and the menu is full of delicious options — from classics to exciting new creations.\n\n📄 Full menu with images here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>"
+            ],
+            "orari": [
+                "🕒 Our opening hours\n\nMonday – Friday: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: ❌ Closed\n\n",
+                "⏰ Here’s when we’re open:\n\nMon–Fri → 09:00 – 20:00\nSaturday → 10:00 – 18:00\nSunday → Closed\n\n",
+                "📍 Here are our opening hours:\n\n🟢 Mon–Fri: 09:00 – 20:00\n🟡 Saturday: 10:00 – 18:00\n🔴 Sunday: Closed\n\n",
+                "😄 Hey! Here’s when you can visit us:\n\n🕘 Mon–Fri: 09:00 – 20:00\n🕙 Saturday: 10:00 – 18:00\n❌ Sunday: Closed\n\n 🍕",
+                "👀 Here are our opening hours:\n\nMon–Fri: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: Closed\n\n",
+                "🍕 Here’s when we’re open for your favorite pizzas:\n\nMon–Fri: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: ❌ Closed\n\n"
+            ],
+            "indirizzo": [
+                "📍 You can find us here:\n\nVia Roma 123, Milan\n\n🗺️ Open directly in Maps:\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Open in Google Maps</a>",
+                "📌 Here’s where we are:\n\nVia Roma 123 – Milan\n\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Get directions on Google Maps</a>",
+                "🚗 You can find us at:\n\nVia Roma 123, Milan\n\n🧭 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Open navigation</a>"
+            ],
+            "prenotazione": [
+                "📅 Perfect! Please choose a method to book:",
+                "🍕 Great, let’s reserve a table for you! Choose a booking method:",
+                "👍 Quick and easy reservation: select one of the following methods:"
+            ],
+            "delivery": [
+                "🍕 Of course! You can order our pizzas for takeaway or home delivery.\n\n📍 Takeaway: just come by at your preferred time and pick up your order.\n\n🏠 Home delivery: order through our partners (Just Eat, Glovo, Deliveroo) or call the pizzeria directly.",
+                "😋 Craving pizza at home?\nWe offer both takeaway and delivery!\n\n📍 Takeaway: come and pick up your order.\n🏡 Delivery: use our partners or call the pizzeria to order at home.\n\nLet me know if you'd like the phone number to order directly 😉",
+                "📦 Pizza at home or to go? No problem!\n\n🍕 Takeaway → pick up your order directly at the pizzeria.\n🏠 Delivery → available via Just Eat, Glovo, Deliveroo or by calling us.",
+                "👀 Want to enjoy our pizzas without leaving home?\n\nYou can choose:\n* Takeaway: pick it up yourself\n* Delivery: receive it comfortably at home via our partners"
+            ],
+            "pagamenti": [
+                "💳 You can pay however you prefer:\n* Cash\n* Credit/debit cards\n* Satispay\n* PayPal (online delivery orders only) 🍕",
+                "🤑 Paying with us is easy:\nWe accept cash, credit/debit cards and Satispay.\nFor delivery orders, you can also use PayPal.",
+                "💰 All major payment methods are available:\n* Cash ✅\n* Cards / Debit cards ✅\n* Satispay ✅\n* PayPal (online only) ✅",
+                "👀 You can pay in different ways:\nCash, cards, debit cards, Satispay and PayPal (online orders only). 🍕"
+            ],
+            "insulti": [
+                "😅 Hey hey, easy there! Let’s keep it friendly 😇",
+                "🙃 Hmm, maybe we can use kinder words 😄",
+                "😬 Oops… let’s stay polite, shall we? 😊",
+                "😏 Not very nice, but I forgive you 😇",
+                "😄 Come on, let’s talk like civilized pizza lovers! 🍕",
+                "🤭 Sorry, I don’t like being spoken to like that… but I’ll stay friendly!"
+            ],
+            "ringraziamenti": [
+                "😊 Thank you! It’s a pleasure to help.",
+                "😄 You’re welcome! I’m here anytime.",
+                "🙏 No problem, happy to help!",
+                "🍕 Always at your service, thank you!",
+                "😉 You’re welcome! If you need anything else, I’m here.",
+                "✨ Thank you! Have a great day!"
+            ],
+            "fallback": [
+                "🤔 Hmm… I’m not sure I understood that correctly, but no worries!\nI’m here to help 😊\n\nYou can ask me things like:\n* 🕒 our opening hours\n* 📅 book a table\n* 🍕 menu and prices\n\nOr use the buttons below 👇",
+                "😄 Oops, maybe I didn’t catch that!\nNo problem, I’ll guide you 😎\n\nHere’s what I can help you with:\n* Reservations 📅\n* Opening hours 🕒\n* Menu and prices 🍕\n\nJust tell me what you need 👇",
+                "👋 Hi! No problem if we didn’t get it right the first time.\nI’m here to make things simple 😄\n\nYou can ask me about:\n🍕 menu and prices\n📅 booking a table\n🕒 opening hours\n\nJust type what you need or use the buttons below 😊",
+                "😅 Hmm… I may not have understood correctly, but don’t worry!\nI’ll help you find what you’re looking for 😉\n\nHere are some things I can do:\n* Menu and prices 🍕\n* Reservations 📅\n* Opening hours 🕒\n\nType your request or click the buttons 👇"
+            ],
+            "social": [
+                "📱 Follow us on social media for updates, promotions and news! Instagram and Facebook are always active.",
+                "🌐 Here are our social channels: Instagram 👉 <a href='https://www.instagram.com/tuopizzeria' target='_blank'>Open Instagram</a>, Facebook 👉 <a href='https://www.facebook.com/tuopizzeria' target='_blank'>Open Facebook</a>",
+                "💬 Want to contact us directly? Message us on WhatsApp or Telegram and we’ll reply right away!"
+            ],
+            "eventi": [
+                "🎶 We’re organizing special evenings: this Saturday we’ll have a country-themed night!",
+                "📅 Here’s what’s coming up at our restaurant: live music, tastings and much more!"
+            ],
+            "offerte": [
+                "🎉 Here’s everything we have for you today:\n\n🍕 **Today’s Menu**: margherita pizza, mushroom pizza, fresh salad and dessert of the day.\n\n💰 **Today’s Special Offer**: margherita pizza + drink for only €8.\n\n✨ **Monthly Deals**: every Friday 2 pizzas for the price of 1, happy hour from 6pm to 8pm with discounts on pizzas and drinks, pizza + drink + dessert combo at a reduced price every weekend.\n\nA great opportunity to enjoy our specialties at convenient prices!"
+            ],
+            "allergeni": [
+                "🌱 We have options for everyone!\n\n🍕 Vegetarian pizzas\n🌿 Vegan pizzas\n🥖 Gluten-free pizzas\n\n📄 Take a look at the full menu to see all available options:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "😋 Don’t worry, we’ve got you covered!\n\nWe offer:\n* Vegetarian pizzas 🍕\n* Vegan pizzas 🌿\n* Gluten-free pizzas 🥖\n\n📄 You can find the full menu with photos here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "👀 Looking for vegetarian, vegan or gluten-free options?\nWe have them all!\n\n🍕 Vegetarian\n🌿 Vegan\n🥖 Gluten-free\n\n📄 Discover the full menu here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>",
+                "🌟 For guests with specific dietary needs:\n* Vegetarian pizzas 🍕\n* Vegan pizzas 🌿\n* Gluten-free pizzas 🥖\n\n📄 Full menu with all options here:\n👉 <a href=\"/menu-pizzeria.pdf\" target=\"_blank\">Open the menu</a>"
+            ],
+            "politiche": [
+                "🐶 Small pets are allowed, as long as they are kept on a leash.\n\n🚭 Smoking is not allowed inside the restaurant, but it is permitted at outdoor tables.\n\n🌿 Outdoor seating is available depending on the season.",
+                "📋 Here are some useful rules:\n\n🐕 Pets allowed at outdoor tables\n🚭 No smoking indoors\n❄️ Air-conditioned restaurant\n\nFor special requests, feel free to contact the restaurant 😊",
+                "ℹ️ The restaurant follows a few simple rules for everyone’s comfort:\n\n• Pets allowed only outdoors\n• Air-conditioned venue\n• Family-friendly environment\n\nWe’re always available for further clarification 👍"
+            ],
+            "logistica": [
+                "🚗 The restaurant is easy to reach by car.\n\n🅿️ Public parking is available nearby.\n♿ The venue is accessible to guests with reduced mobility.",
+                "📍 How to reach us:\n\n• Parking available nearby\n• Ground-floor entrance\n• Easy access with strollers\n\nFor precise directions, you can use Google Maps 😊",
+                "🚙 You can easily reach us by car.\n\n🅿️ Public parking available nearby\n👶 Family-friendly location\n\nIf you have any questions, feel free to contact us 👍"
+            ],
+            "tempi": [
+                "⏳ Waiting times may vary depending on the time and how busy we are.\n\n📅 We recommend booking in advance to avoid possible waits.",
+                "🕰️ During peak hours there may be a short wait.\n\nFor the best experience, we recommend making a reservation 😊",
+                "ℹ️ Service times depend on the time of day and the number of guests.\n\n📞 For real-time updates, please contact the restaurant directly."
+            ],
+            "contatti": [
+                "📞 You can contact us directly by phone for reservations or information.",
+                "📧 You can also reach us by email for any requests or special needs.",
+                "💬 Prefer messaging? Contact us via WhatsApp for a quick reply!"
+            ]
+        }
+    },
+    "errors": {
+        "it": {
+            "required": "Seleziona data e ora",
+            "pastDate": "La data non può essere nel passato",
+            "tooSoon": "Le prenotazioni devono essere almeno {{minutes}} minuti in anticipo",
+            "tooFar": "Puoi prenotare massimo {{days}} giorni in anticipo",
+            "closedToday": {
+                "sunday": "Siamo chiusi la domenica",
+                "default": "Giorno chiuso"
+            },
+            "closedByException": "Giorno chiuso: {{reason}}",
+            "outsideHours": "Prenotazioni disponibili negli orari: {{slots}}",
+            "numNonValido": "Numero non valido. Ricorda di includere il prefisso internazionale (es. +39 347 1234567)",
+            "numero": "Inserisci il tuo numero di telefono",
+            "nome": "Inserisci il nome e cognome",
+            "note": "Inserisci il numero di persone"
+        },
+        "en": {
+            "required": "Please select a date and time",
+            "pastDate": "The selected date cannot be in the past",
+            "tooSoon": "Reservations must be made at least {{minutes}} minutes in advance",
+            "tooFar": "You can book up to {{days}} days in advance",
+            "closedToday": {
+                "sunday": "We are closed on Sundays",
+                "default": "Closed on this day"
+            },
+            "closedByException": "Closed on this day: {{reason}}",
+            "outsideHours": "Reservations are available during these hours: {{slots}}",
+            "numNonValido": "Invalid phone number. Please include the international prefix (e.g. +39 347 1234567)",
+            "numero": "Enter your phone number",
+            "nome": "Enter your first and last name",
+            "note": "Enter the number of guests"
+        }
+    },
+    "ui": {
+        "chatFabColor": "#111",
+        "toolTipColor": "#111",
+        "chatBoxColor": "#fff",
+        "chatHeaderColor": "#111",
+        "chatHeaderText": "#fff",
+        "chatBackground": "#f7f7f7",
+        "messageBot": "#eaeaea",
+        "messageBotText": "#000",
+        "messageUser": "#111",
+        "messageUserText": "#fff",
+        "typingColor": "#eaeaea",
+        "dotsColor": "#999",
+        "quickActionsBackground": "#fff",
+        "showQuickActions": true,
+        "showTooltip": true
+    },
+    "frasi": {
+        "it": {
+            "tel": "📞 Chiama direttamente:",
+            "bookConfirm": "Abbiamo inviato la tua richiesta di prenotazione al ristorante. Ti confermeranno a breve 😊",
+            "prenota": "Prenota",
+            "orari": "Orari",
+            "posizione": "Posizione",
+            "chiama": "Chiama",
+            "nome": "Nome e Cognome",
+            "numero": "Numero di telefono",
+            "data": "Data e ora",
+            "note": "Note",
+            "annulla": "Annulla",
+            "invia": "Invia prenotazione"
+        },
+        "en": {
+            "tel": "📞 Call directly:",
+            "bookConfirm": "We've sent your reservation request to the restaurant. They'll confirm shortly 😊",
+            "prenota": "Book",
+            "orari": "Hours",
+            "posizione": "Location",
+            "chiama": "Call",
+            "nome": "First and Last Name",
+            "numero": "Phone Number",
+            "data": "Date and Time",
+            "note": "Notes",
+            "annulla": "Cancel",
+            "invia": "Send Booking Request"
+        }
+    },
+    "legal": {
+        "privacyUrl": "/privacy-policy.html",
+        "termsUrl": "/terms.html"
+    },
+    "exceptions": [
+        {
+            "date": "2026-12-25",
+            "closed": true,
+            "reason": "Natale"
+        },
+        {
+            "date": "2026-02-12",
+            "closed": true,
+            "reason": "Chiusura straordinaria"
+        },
+        {
+            "date": "2026-08-15",
+            "closed": true,
+            "reason": "Ferragosto"
+        }
+    ]
+}
