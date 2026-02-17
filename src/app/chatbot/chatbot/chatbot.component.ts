@@ -35,20 +35,25 @@ export class ChatbotComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
   ) {}
+  private getClientFromUrl(): string {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('client') || 'demo';
+  }
 
   ngOnInit(): void {
-    // Carica config JSON
-    this.http.get('demo.json').subscribe((data) => {
+    const client = this.getClientFromUrl();
+
+    this.http.get(`${client}.json`).subscribe((data) => {
       this.config = data;
-      console.log(this.config); // log per debug
+      console.log(this.config);
+
       applyThemeColors(this.config);
-      // messaggio di benvenuto
+
       this.messages.push({
         text: this.config.responses[this.lang].benvenuto,
         sender: 'bot',
       });
 
-      // ==== CREAZIONE DINAMICA DEL FORM ====
       const group: { [key: string]: FormControl } = {};
 
       Object.entries(this.config.booking.fields).forEach(([key, field]: any) => {
@@ -59,9 +64,6 @@ export class ChatbotComponent implements OnInit {
         }
 
         if (key === 'phone') {
-          // 👉 NON aggiungiamo più phoneValidator qui
-
-          // aggiungiamo il campo prefix separato
           group['prefix'] = new FormControl('+39', {
             nonNullable: true,
             validators: [Validators.required],
@@ -82,7 +84,6 @@ export class ChatbotComponent implements OnInit {
         validators: phoneGroupValidator,
       });
 
-      // listener per aggiornare errori datetime
       const datetimeControl = this.bookingForm.get('datetime');
       datetimeControl?.valueChanges.subscribe(() => {
         this.updateDatetimeError();
