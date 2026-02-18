@@ -621,3 +621,7 @@
 .prefix-option:hover {
   background: #f5f5ff;
 }
+.chat-fab,
+.chatbox {
+  pointer-events: auto;
+}
