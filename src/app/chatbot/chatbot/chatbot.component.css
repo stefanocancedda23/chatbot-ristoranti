@@ -625,7 +625,6 @@
   pointer-events: none;
 }
 
-.chat-fab,
-.chatbox {
+.chat-fab {
   pointer-events: auto;
 }

@@ -129,6 +129,9 @@ export class ChatbotComponent implements OnInit {
       this.scrollToBottom();
     }
     this.showTooltip = false;
+    if (window.parent) {
+      window.parent.postMessage({ type: this.open ? 'BOT_OPEN' : 'BOT_CLOSE' }, '*');
+    }
   }
 
   botTyping = false;
