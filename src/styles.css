@@ -1,10 +1,3 @@
 body {
   background: transparent !important;
 }
-html, body, app-root {
-  height: 100%;
-}
-
-app-root {
-  display: block;
-}

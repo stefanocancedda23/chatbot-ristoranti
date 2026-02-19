@@ -2,12 +2,15 @@
    CHAT FAB
 ========================= */
 :host {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
-
+.chat-fab,
+.chatbox {
+  pointer-events: auto;
+}
 .chat-fab {
   position: absolute;
   bottom: 20px;
