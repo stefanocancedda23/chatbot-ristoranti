@@ -2,18 +2,16 @@
    CHAT FAB
 ========================= */
 :host {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 
 .chat-fab {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 20;
+  right: 20;
   width: 60px;
   height: 60px;
   background: var(--chat-fab-color);
@@ -35,9 +33,9 @@
    CHATBOX
 ========================= */
 .chatbox {
-  position: fixed;
+  position: absolute;
   bottom: 100px;
-  right: 24px;
+  right: 20px;
   width: 360px;
   height: 520px;
   background: var(--chat-box-color);
