@@ -621,10 +621,3 @@
 .prefix-option:hover {
   background: #f5f5ff;
 }
-:host {
-  pointer-events: none;
-}
-
-.chat-fab {
-  pointer-events: auto;
-}
