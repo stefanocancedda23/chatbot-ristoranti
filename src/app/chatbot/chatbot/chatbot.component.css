@@ -346,7 +346,7 @@
 
   .chatbox {
     position: fixed;
-
+    background: red !important;
     /* centrata orizzontalmente */
     left: 50%;
     transform: translateX(-50%);
