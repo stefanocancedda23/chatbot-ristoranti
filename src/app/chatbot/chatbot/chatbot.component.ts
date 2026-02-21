@@ -52,7 +52,7 @@ export class ChatbotComponent implements OnInit {
 
     const client = this.getClientFromUrl();
 
-    this.http.get(`/data/${client}.json`).subscribe((data) => {
+    this.http.get(`data/${client}.json`).subscribe((data) => {
       this.config = data;
       console.log(this.config);
 
