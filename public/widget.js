@@ -85,28 +85,30 @@
   button.addEventListener('mouseup', () => {
     button.style.transform = 'scale(1.08)';
   });
-const iframe = document.createElement('iframe');
-iframe.src = BOT_URL + '?client=' + encodeURIComponent(client);
+  const iframe = document.createElement('iframe');
+  iframe.src = BOT_URL + '?client=' + encodeURIComponent(client);
 
-Object.assign(iframe.style, {
-  width: '380px',
-  height: '600px',
-  border: 'none',
-  borderRadius: '18px',
-  boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
-  background: '#fff',
-  transform: 'translateY(20px) scale(0.95)',
-  opacity: '0',
-  transition: 'all .3s cubic-bezier(.4,0,.2,1)',
-  pointerEvents: 'none',
-});
+  Object.assign(iframe.style, {
+    position: 'fixed',
+    bottom: '24px',
+    right: '24px',
+    width: '380px',
+    height: '600px',
+    border: 'none',
+    borderRadius: '18px',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
+    background: 'transparent',
+    transform: 'scale(0.8)',
+    opacity: '0',
+    transition: 'all .3s cubic-bezier(.4,0,.2,1)',
+    pointerEvents: 'none',
+  });
 
   document.body.appendChild(iframe);
   let isOpen = false;
 
   button.addEventListener('click', () => {
     if (!isOpen) {
-      // APRI
       iframe.style.opacity = '1';
       iframe.style.transform = 'scale(1)';
       iframe.style.pointerEvents = 'auto';
@@ -116,13 +118,6 @@ Object.assign(iframe.style, {
       isOpen = true;
 
       iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
-    } else {
-      // CHIUDI
-      iframe.style.opacity = '0';
-      iframe.style.transform = 'scale(0.8)';
-      iframe.style.pointerEvents = 'none';
-
-      isOpen = false;
     }
   });
   window.addEventListener('message', (event) => {
@@ -132,7 +127,6 @@ Object.assign(iframe.style, {
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
       iframe.style.pointerEvents = 'none';
-
       isOpen = false;
     }
   });
