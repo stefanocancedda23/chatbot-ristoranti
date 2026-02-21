@@ -102,7 +102,6 @@
     background: 'transparent',
     transform: 'scale(0.8)',
     opacity: '0',
-    transition: 'all .3s cubic-bezier(.4,0,.2,1)',
     pointerEvents: 'none',
   });
 

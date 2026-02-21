@@ -341,13 +341,16 @@
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 480px) {
-  .chatbox {
-    width: 90%;
-    height: 60vh;
-    bottom: 16px;
-    right: 5%;
+@media (max-width: 720px) {
+ .chatbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: calc(100dvh - 16px);
+    border-radius: 16px 16px 0 0;
   }
+
 
   .booking-form input {
     font-size: 13px;
