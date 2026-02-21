@@ -101,7 +101,7 @@
     pointerEvents: 'none',
   });
 
-  wrapper.insertBefore(iframe, button);
+  wrapper.insertBefore(iframe, button, tooltip);
   let isOpen = false;
 
   button.addEventListener('click', () => {
