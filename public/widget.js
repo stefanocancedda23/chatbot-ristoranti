@@ -153,6 +153,7 @@
       iframe.style.height = '100dvh';
       iframe.style.borderRadius = '0';
       iframe.style.boxShadow = 'none';
+      wrapper.style.pointerEvents = 'none';
       iframe.style.zIndex = '2147483646';
       iframe.style.opacity = '1';
       iframe.style.transform = 'scale(1)';
@@ -167,7 +168,7 @@
       iframe.style.left = 'auto';
       iframe.style.right = '24px';
       iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
-
+      wrapper.style.pointerEvents = 'auto';
       iframe.style.width = '380px';
       iframe.style.height = '600px';
       iframe.style.borderRadius = '18px';
@@ -188,7 +189,7 @@
       iframe.style.left = 'auto';
       iframe.style.right = '24px';
       iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
-
+      wrapper.style.pointerEvents = 'auto';
       iframe.style.width = '380px';
       iframe.style.height = '600px';
       iframe.style.borderRadius = '18px';
