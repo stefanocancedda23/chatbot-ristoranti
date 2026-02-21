@@ -346,11 +346,10 @@
 
   .chatbox {
     position: fixed;
-    background: red !important;
     /* centrata orizzontalmente */
     left: 50%;
     transform: translateX(-50%);
-
+    right: auto;
     /* leggermente sopra la FAB */
     bottom: calc(110px + env(safe-area-inset-bottom));
 
@@ -358,7 +357,6 @@
     width: 85dvw;
     max-width: 380px;
 
-    height: auto;
     max-height: 95dvh;
 
     border-radius: 20px;
@@ -375,7 +373,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 720px) {
   .message-wrapper {
     display: flex;
     flex-direction: column;
@@ -516,7 +514,7 @@
 }
 
 /* responsive */
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .methods-grid {
     grid-template-columns: 1fr;
   }
