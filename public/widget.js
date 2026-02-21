@@ -140,7 +140,7 @@
       iframe.style.height = '600px';
       iframe.style.borderRadius = '18px';
       iframe.style.boxShadow = '0 20px 60px rgba(0,0,0,0.35)';
-      iframe.style.background = '#fff';
+      iframe.style.background = 'transparent';
 
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
