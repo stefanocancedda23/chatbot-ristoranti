@@ -41,15 +41,16 @@ export class ChatbotComponent implements OnInit {
 
   ngOnInit(): void {
     window.addEventListener('message', (event) => {
-      if (!event.data || !event.data.type) return;
+      this.zone.run(() => {
+        if (!event.data || !event.data.type) return;
 
-      if (event.data.type === 'BOT_OPEN') {
-        setTimeout(() => {
-          this.scrollToBottom();
-        }, 200);
-      }
+        if (event.data.type === 'BOT_OPEN') {
+          setTimeout(() => {
+            this.scrollToBottom();
+          }, 200);
+        }
+      });
     });
-
     const client = this.getClientFromUrl();
 
     this.http.get<any>(`data/${client}.json`).subscribe({
