@@ -24,19 +24,49 @@
   tooltip.innerText = 'Hai domande su menù, orari o prenotazioni?';
 
   Object.assign(tooltip.style, {
-    background: '#222',
-    color: '#fff',
-    padding: '10px 14px',
-    borderRadius: '12px',
-    fontSize: '13px',
-    maxWidth: '220px',
-    boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
+    position: 'relative',
+    background: '#ffffff',
+    color: '#111',
+    padding: '12px 16px',
+    borderRadius: '18px',
+    fontSize: '14px',
+    lineHeight: '1.4',
+    maxWidth: '240px',
+    boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
     opacity: '0',
-    transform: 'translateY(10px)',
+    transform: 'translateY(12px)',
+    transition: 'all .35s cubic-bezier(.4,0,.2,1)',
     pointerEvents: 'none',
   });
+  const tail = document.createElement('div');
 
+  Object.assign(tail.style, {
+    position: 'absolute',
+    bottom: '-6px',
+    right: '18px',
+    width: '12px',
+    height: '12px',
+    background: '#ffffff',
+    transform: 'rotate(45deg)',
+    boxShadow: '2px 2px 6px rgba(0,0,0,0.05)',
+  });
+
+  tooltip.appendChild(tail);
   wrapper.appendChild(tooltip);
+
+  let floatInterval;
+
+  setTimeout(() => {
+    tooltip.style.opacity = '1';
+    tooltip.style.transform = 'translateY(0)';
+
+    floatInterval = setInterval(() => {
+      tooltip.style.transform = 'translateY(-4px)';
+      setTimeout(() => {
+        tooltip.style.transform = 'translateY(0)';
+      }, 1200);
+    }, 2400);
+  }, 800);
   setTimeout(() => {
     tooltip.style.opacity = '1';
     tooltip.style.transform = 'translateY(0)';
@@ -45,8 +75,9 @@
   // Auto hide elegante
   setTimeout(() => {
     tooltip.style.opacity = '0';
-    tooltip.style.transform = 'translateY(10px)';
-  }, 5000);
+    tooltip.style.transform = 'translateY(12px)';
+    clearInterval(floatInterval);
+  }, 6000);
   const button = document.createElement('div');
   button.innerHTML = '💬';
 
@@ -111,6 +142,9 @@
   button.addEventListener('click', () => {
     if (!isOpen) {
       // 🔥 FULLSCREEN
+      tooltip.style.opacity = '0';
+      tooltip.style.transform = 'translateY(10px)';
+
       iframe.style.top = '0';
       iframe.style.left = '0';
       iframe.style.right = '0';
