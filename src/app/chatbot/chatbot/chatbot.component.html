@@ -1,8 +1,6 @@
 <div *ngIf="config?.business?.activated">
-  <div class="chat-tooltip" *ngIf="showTooltip && config.ui.showTooltip">Hai domande su menù, orari o prenotazioni?
-  </div>
-  <div class="chat-fab" (click)="toggleChat()">💬</div>
-  <div class="chatbox" *ngIf="open">
+
+  <div class="chatbox">
     <div class="chat-header">
       <span>{{ config.business.nomeAssistente }}</span>
 
@@ -22,7 +20,7 @@
           </div>
         </div>
       </div>
-      <button (click)="toggleChat()">✕</button>
+      <button (click)="closeChat()">✕</button>
     </div>
 
 

@@ -23,7 +23,6 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 })
 export class ChatbotComponent implements OnInit {
   bookingForm!: FormGroup;
-  showTooltip = false;
   lang = 'it';
   config: any;
   datetimeErrorMessage: string | null = null;
@@ -41,9 +40,19 @@ export class ChatbotComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.addEventListener('message', (event) => {
+      if (!event.data || !event.data.type) return;
+
+      if (event.data.type === 'BOT_OPEN') {
+        setTimeout(() => {
+          this.scrollToBottom();
+        }, 200);
+      }
+    });
+
     const client = this.getClientFromUrl();
 
-    this.http.get(`${client}.json`).subscribe((data) => {
+    this.http.get(`/data/${client}.json`).subscribe((data) => {
       this.config = data;
       console.log(this.config);
 
@@ -92,28 +101,11 @@ export class ChatbotComponent implements OnInit {
         this.updateDatetimeError();
       });
     });
-
-    // tooltip iniziale
-    const tooltipSeen = false;
-    if (!tooltipSeen) {
-      setTimeout(() => {
-        this.zone.run(() => {
-          this.showTooltip = true;
-          this.cdr.markForCheck();
-        });
-
-        setTimeout(() => {
-          this.zone.run(() => {
-            this.showTooltip = false;
-            localStorage.setItem('chatTooltipSeen', 'true');
-            this.cdr.markForCheck();
-          });
-        }, 3900);
-      }, 800);
-    }
+  }
+  closeChat() {
+    window.parent.postMessage({ type: 'BOT_CLOSE' }, '*');
   }
 
-  open = false;
   @ViewChild('chatBody') chatBody!: ElementRef<HTMLDivElement>;
   userInput = '';
 
@@ -122,17 +114,6 @@ export class ChatbotComponent implements OnInit {
     sender: 'user' | 'bot';
     isHtml?: boolean;
   }[] = [];
-
-  toggleChat() {
-    this.open = !this.open;
-    if (this.open) {
-      this.scrollToBottom();
-    }
-    this.showTooltip = false;
-    if (window.parent) {
-      window.parent.postMessage({ type: this.open ? 'BOT_OPEN' : 'BOT_CLOSE' }, '*');
-    }
-  }
 
   botTyping = false;
   showPrefixDropdown = false;
