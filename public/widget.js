@@ -110,16 +110,13 @@
 
   button.addEventListener('click', () => {
     if (!isOpen) {
-      // 👇 NASCONDO FAB + TOOLTIP
-      wrapper.style.display = 'none';
-
-      // fullscreen
+      // 🔥 FULLSCREEN
       iframe.style.top = '0';
       iframe.style.left = '0';
-      iframe.style.bottom = '0';
       iframe.style.right = '0';
+      iframe.style.bottom = '0';
       iframe.style.width = '100vw';
-      iframe.style.height = '100dvh'; // 👈 usa d**vh**
+      iframe.style.height = '100dvh';
       iframe.style.borderRadius = '0';
       iframe.style.boxShadow = 'none';
 
@@ -131,8 +128,16 @@
 
       iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
     } else {
-      // 👇 RIABILITO FAB
-      wrapper.style.display = 'flex';
+      // 🔄 TORNA FLOATING
+      iframe.style.top = 'auto';
+      iframe.style.left = 'auto';
+      iframe.style.right = '24px';
+      iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
+
+      iframe.style.width = '380px';
+      iframe.style.height = '600px';
+      iframe.style.borderRadius = '18px';
+      iframe.style.boxShadow = '0 20px 60px rgba(0,0,0,0.35)';
 
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
@@ -145,6 +150,16 @@
     if (!event.data || !event.data.type) return;
 
     if (event.data.type === 'BOT_CLOSE') {
+      iframe.style.top = 'auto';
+      iframe.style.left = 'auto';
+      iframe.style.right = '24px';
+      iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
+
+      iframe.style.width = '380px';
+      iframe.style.height = '600px';
+      iframe.style.borderRadius = '18px';
+      iframe.style.boxShadow = '0 20px 60px rgba(0,0,0,0.35)';
+
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
       iframe.style.pointerEvents = 'none';
