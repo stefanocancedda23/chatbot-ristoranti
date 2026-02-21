@@ -352,14 +352,14 @@
     transform: translateX(-50%);
 
     /* leggermente sopra la FAB */
-    bottom: 90px;
+    bottom: 100px;
 
     /* dimensioni responsive vere */
-    width: 92vw;
+    width: 75dvw;
     max-width: 380px;
 
     height: auto;
-    max-height: 75dvh;
+    max-height: 85dvh;
 
     border-radius: 20px;
   }
