@@ -14,12 +14,13 @@
   height: 520px;
   background: var(--chat-box-color);
   border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
 }
+
 .chat-header {
   background: var(--chat-header-color);
   color: var(--chat-header-text);
@@ -342,15 +343,17 @@
    RESPONSIVE
 ========================= */
 @media (max-width: 720px) {
- .chatbox {
+
+  .chatbox {
     position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
     bottom: 0;
     right: 0;
-    width: 100vw;
-    height: calc(100dvh - 16px);
-    border-radius: 16px 16px 0 0;
+    border-radius: 0;
   }
-
 
   .booking-form input {
     font-size: 13px;
