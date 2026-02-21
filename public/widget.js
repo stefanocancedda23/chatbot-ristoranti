@@ -87,17 +87,20 @@
   });
   const iframe = document.createElement('iframe');
   iframe.src = BOT_URL + '?client=' + encodeURIComponent(client);
+  const FAB_SIZE = 60;
+  const BASE_OFFSET = 24;
+  const GAP = 16;
 
   Object.assign(iframe.style, {
     position: 'fixed',
-    bottom: '24px',
+    bottom: `${BASE_OFFSET + FAB_SIZE + GAP}px`,
     right: '24px',
     width: '380px',
     height: '600px',
     border: 'none',
     borderRadius: '18px',
     boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
-    background: 'transparent',
+    background: '#fff',
     transform: 'scale(0.8)',
     opacity: '0',
     transition: 'all .3s cubic-bezier(.4,0,.2,1)',
