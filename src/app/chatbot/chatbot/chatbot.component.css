@@ -346,13 +346,22 @@
 
   .chatbox {
     position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
+
+    /* centrata orizzontalmente */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* leggermente sopra la FAB */
+    bottom: 90px;
+
+    /* dimensioni responsive vere */
+    width: 92vw;
+    max-width: 380px;
+
+    height: auto;
+    max-height: 65dvh;
+
+    border-radius: 20px;
   }
 
   .booking-form input {
