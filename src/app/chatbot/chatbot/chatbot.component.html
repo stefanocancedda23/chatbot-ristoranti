@@ -1,9 +1,10 @@
-  <div *ngIf="config as cfg">
-    
-    <div class="chat-header">
-      <span>{{ cfg.business.nomeAssistente }}</span>
 
-      <div class="lang-dropdown" *ngIf="cfg.business?.multiLanguage">
+
+  <div class="chatbox">
+    <div class="chat-header">
+      <span>{{ config.business.nomeAssistente }}</span>
+
+      <div class="lang-dropdown" *ngIf="config.business?.multiLanguage">
         <button class="lang-trigger" (click)="toggleLangMenu()">
           {{ lang === 'it' ? '🇮🇹 Italiano' : '🇬🇧 English' }}
           <span class="arrow">▾</span>
@@ -33,12 +34,12 @@
           </div>
 
           <div class="quick-actions"
-            *ngIf="msg.sender === 'bot' && i === messages.length - 1 && cfg.ui.showQuickActions">
-            <button *ngIf="cfg.booking.enabled && showQuickActions" (click)="bookClick1()">📅
-              {{cfg.frasi[lang].prenota}}</button>
-            <button *ngIf="showQuickActions" (click)="showHours()">🕒 {{cfg.frasi[lang].orari}}</button>
-            <button *ngIf="showQuickActions" (click)="openMaps()">📍 {{cfg.frasi[lang].posizione}}</button>
-            <button *ngIf="showQuickActions" (click)="callNumber()">📞 {{cfg.frasi[lang].chiama}}</button>
+            *ngIf="msg.sender === 'bot' && i === messages.length - 1 && config.ui.showQuickActions">
+            <button *ngIf="config.booking.enabled && showQuickActions" (click)="bookClick1()">📅
+              {{config.frasi[lang].prenota}}</button>
+            <button *ngIf="showQuickActions" (click)="showHours()">🕒 {{config.frasi[lang].orari}}</button>
+            <button *ngIf="showQuickActions" (click)="openMaps()">📍 {{config.frasi[lang].posizione}}</button>
+            <button *ngIf="showQuickActions" (click)="callNumber()">📞 {{config.frasi[lang].chiama}}</button>
 
 
             <div *ngIf="showMethod" class="booking-methods">
@@ -54,7 +55,7 @@
 
                     <button *ngSwitchCase="'phone'" class="method-btn phone" (click)="callNumber()">
                       <span class="icon">☎️</span>
-                      <span class="label">{{cfg.frasi[lang].chiama}}</span>
+                      <span class="label">{{config.frasi[lang].chiama}}</span>
                     </button>
 
                     <button *ngSwitchCase="'whatsapp'" class="method-btn whatsapp" (click)="bookNow()">
@@ -67,7 +68,7 @@
               </div>
 
               <button class="cancel-btn" (click)="cancelMethod()">
-                ❌ {{cfg.frasi[lang].annulla}}
+                ❌ {{config.frasi[lang].annulla}}
               </button>
 
             </div>
@@ -78,19 +79,19 @@
               (ngSubmit)="sendBookingWhatsApp()" class="booking-form">
               <!-- Nome -->
               <label class="form-label">
-                {{cfg.frasi[lang].nome}}
+                {{config.frasi[lang].nome}}
                 <span *ngIf="config.booking.fields.name.required" class="required">*</span></label>
-              <input type="text" formControlName="name" placeholder={{cfg.frasi[lang].nome}} />
+              <input type="text" formControlName="name" placeholder={{config.frasi[lang].nome}} />
               <div class="field-error" *ngIf="bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched">
                 <span class="icon">⚠️</span>
-                {{cfg.errors[lang].nome}}
+                {{config.errors[lang].nome}}
               </div>
 
               <!-- Telefono -->
               <!-- Telefono con prefisso obbligatorio -->
               <label class="form-label">
-                {{cfg.frasi[lang].numero}}
-                <span *ngIf="cfg.booking.fields.phone.required" class="required">*</span>
+                {{config.frasi[lang].numero}}
+                <span *ngIf="config.booking.fields.phone.required" class="required">*</span>
               </label>
 
               <div class="phone-field">
@@ -122,19 +123,19 @@
               <div class="field-error" *ngIf="
                 bookingForm.get('phone')?.errors?.['required'] && bookingForm.get('phone')?.touched
                 ">
-                <span class="icon">⚠️</span> {{cfg.errors[lang].numero}}
+                <span class="icon">⚠️</span> {{config.errors[lang].numero}}
               </div>
 
               <div class="field-error" *ngIf="bookingForm.errors?.['invalidPhone']">
-                <span class="icon">⚠️</span> {{cfg.errors[lang].numNonValido}}
+                <span class="icon">⚠️</span> {{config.errors[lang].numNonValido}}
               </div>
 
 
 
               <!-- Data e ora -->
               <label class="form-label">
-                {{cfg.frasi[lang].data}}
-                <span *ngIf="cfg.booking.fields.datetime.required" class="required">*</span></label>
+                {{config.frasi[lang].data}}
+                <span *ngIf="config.booking.fields.datetime.required" class="required">*</span></label>
               <input type="datetime-local" formControlName="datetime" />
 
               <div *ngIf="datetimeErrorMessage" class="field-error">
@@ -144,22 +145,22 @@
 
               <!-- Note -->
               <label class="form-label">
-                {{cfg.frasi[lang].note}} <span *ngIf="cfg.booking.fields.notes.required" class="required">*</span>
+                {{config.frasi[lang].note}} <span *ngIf="config.booking.fields.notes.required" class="required">*</span>
               </label>
               <input type="text" formControlName="notes" placeholder="Note" />
               <div class="field-error" *ngIf="
                 bookingForm.get('notes')?.errors?.['required'] && bookingForm.get('notes')?.touched
               ">
-                <span class="icon">⚠️</span> {{cfg.errors[lang].note}}
+                <span class="icon">⚠️</span> {{config.errors[lang].note}}
               </div>
               <!-- Pulsanti -->
               <div class="booking-buttons">
                 <button type="submit" class="whatsapp" [disabled]="!bookingForm.valid">
                   <img src="/whatsapp.svg" alt="WhatsApp" />
-                  {{cfg.frasi[lang].invia}}
+                  {{config.frasi[lang].invia}}
                 </button>
 
-                <button type="button" class="cancel" (click)="cancelBooking()">❌ {{cfg.frasi[lang].annulla}}</button>
+                <button type="button" class="cancel" (click)="cancelBooking()">❌ {{config.frasi[lang].annulla}}</button>
               </div>
             </form>
           </div>
