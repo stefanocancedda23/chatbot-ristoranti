@@ -33,7 +33,6 @@
     boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
     opacity: '0',
     transform: 'translateY(10px)',
-    transition: 'all .35s cubic-bezier(.4,0,.2,1)',
     pointerEvents: 'none',
   });
 
