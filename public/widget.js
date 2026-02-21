@@ -100,7 +100,7 @@
     border: 'none',
     borderRadius: '18px',
     boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
-    background: '#fff',
+    background: 'transparent',
     transform: 'scale(0.8)',
     opacity: '0',
     transition: 'all .3s cubic-bezier(.4,0,.2,1)',
@@ -112,26 +112,27 @@
 
   button.addEventListener('click', () => {
     if (!isOpen) {
-      if (!isOpen) {
-        // 🔄 trasformo iframe in overlay fullscreen
-        iframe.style.bottom = '0';
-        iframe.style.right = '0';
-        iframe.style.width = '100vw';
-        iframe.style.height = '100vh';
-        iframe.style.borderRadius = '0';
-        iframe.style.boxShadow = 'none';
-        iframe.style.background = 'transparent';
+      // 🔥 Diventa fullscreen vero
+      iframe.style.top = '0';
+      iframe.style.left = '0';
+      iframe.style.bottom = '0';
+      iframe.style.right = '0';
+      iframe.style.width = '100vw';
+      iframe.style.height = '100vh';
 
-        iframe.style.opacity = '1';
-        iframe.style.transform = 'scale(1)';
-        iframe.style.pointerEvents = 'auto';
+      iframe.style.borderRadius = '0';
+      iframe.style.boxShadow = 'none';
+      iframe.style.background = 'transparent';
 
-        tooltip.style.opacity = '0';
+      iframe.style.opacity = '1';
+      iframe.style.transform = 'scale(1)';
+      iframe.style.pointerEvents = 'auto';
 
-        isOpen = true;
+      tooltip.style.opacity = '0';
 
-        iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
-      }
+      isOpen = true;
+
+      iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
     } else {
       // 🔄 torno alla modalità floating
       iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
