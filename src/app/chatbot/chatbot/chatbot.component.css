@@ -6,21 +6,32 @@
   width: 100%;
   height: 100%;
 }
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 24px;
+}
 /* =========================
    CHATBOX
 ========================= */
+
 .chatbox {
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 360px;
+  height: 520px;
   background: var(--chat-box-color);
   border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
 }
-
 .chat-header {
   background: var(--chat-header-color);
   color: var(--chat-header-text);

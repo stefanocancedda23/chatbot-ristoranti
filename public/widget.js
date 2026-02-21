@@ -112,18 +112,36 @@
 
   button.addEventListener('click', () => {
     if (!isOpen) {
-      // APRI
-      iframe.style.opacity = '1';
-      iframe.style.transform = 'scale(1)';
-      iframe.style.pointerEvents = 'auto';
+      if (!isOpen) {
+        // 🔄 trasformo iframe in overlay fullscreen
+        iframe.style.bottom = '0';
+        iframe.style.right = '0';
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.borderRadius = '0';
+        iframe.style.boxShadow = 'none';
+        iframe.style.background = 'transparent';
 
-      tooltip.style.opacity = '0';
+        iframe.style.opacity = '1';
+        iframe.style.transform = 'scale(1)';
+        iframe.style.pointerEvents = 'auto';
 
-      isOpen = true;
+        tooltip.style.opacity = '0';
 
-      iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
+        isOpen = true;
+
+        iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
+      }
     } else {
-      // CHIUDI
+      // 🔄 torno alla modalità floating
+      iframe.style.bottom = `${BASE_OFFSET + FAB_SIZE + GAP}px`;
+      iframe.style.right = '24px';
+      iframe.style.width = '380px';
+      iframe.style.height = '600px';
+      iframe.style.borderRadius = '18px';
+      iframe.style.boxShadow = '0 20px 60px rgba(0,0,0,0.35)';
+      iframe.style.background = '#fff';
+
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
       iframe.style.pointerEvents = 'none';
