@@ -14,7 +14,7 @@
     right: '24px',
     zIndex: '2147483647',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     alignItems: 'flex-end',
     gap: '12px',
   });
@@ -101,7 +101,7 @@
     pointerEvents: 'none',
   });
 
-  wrapper.insertBefore(iframe, button, tooltip);
+  wrapper.insertBefore(iframe, button);
   let isOpen = false;
 
   button.addEventListener('click', () => {
