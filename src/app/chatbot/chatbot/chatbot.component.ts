@@ -59,7 +59,7 @@ export class ChatbotComponent implements OnInit {
 
         try {
           this.config = data;
-
+          this.cdr.detectChanges();
           // 👇 sicurezza su applyTheme
           if (this.config) {
             applyThemeColors(this.config);
