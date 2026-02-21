@@ -52,54 +52,81 @@ export class ChatbotComponent implements OnInit {
 
     const client = this.getClientFromUrl();
 
-    this.http.get(`data/${client}.json`).subscribe((data) => {
-      this.config = data;
-      console.log(this.config);
+    this.http.get<any>(`data/${client}.json`).subscribe({
+      next: (data) => {
+        console.log('✅ JSON ARRIVATO:', data);
 
-      applyThemeColors(this.config);
+        try {
+          this.config = data;
 
-      this.messages.push({
-        text: this.config.responses[this.lang].benvenuto,
-        sender: 'bot',
-      });
+          // 👇 sicurezza su applyTheme
+          if (this.config) {
+            applyThemeColors(this.config);
+          }
 
-      const group: { [key: string]: FormControl } = {};
+          // 👇 sicurezza su responses
+          const welcome = this.config?.responses?.[this.lang]?.benvenuto ?? 'Ciao!';
 
-      Object.entries(this.config.booking.fields).forEach(([key, field]: any) => {
-        const validators = [];
+          this.messages = [
+            {
+              text: welcome,
+              sender: 'bot',
+            },
+          ];
 
-        if (field.required) {
-          validators.push(Validators.required);
-        }
+          // 👇 se booking non esiste, esci
+          if (!this.config?.booking?.fields) {
+            console.warn('⚠️ booking.fields non esiste nel JSON');
+            return;
+          }
 
-        if (key === 'phone') {
-          group['prefix'] = new FormControl('+39', {
-            nonNullable: true,
-            validators: [Validators.required],
+          const group: { [key: string]: FormControl } = {};
+
+          Object.entries(this.config.booking.fields).forEach(([key, field]: any) => {
+            const validators = [];
+
+            if (field?.required) {
+              validators.push(Validators.required);
+            }
+
+            if (key === 'phone') {
+              group['prefix'] = new FormControl('+39', {
+                nonNullable: true,
+                validators: [Validators.required],
+              });
+            }
+
+            if (key === 'datetime') {
+              validators.push(bookingDateValidator(this.config));
+            }
+
+            group[key] = new FormControl('', {
+              nonNullable: true,
+              validators,
+            });
           });
+
+          this.bookingForm = new FormGroup(group, {
+            validators: phoneGroupValidator,
+          });
+
+          const datetimeControl = this.bookingForm.get('datetime');
+
+          datetimeControl?.valueChanges.subscribe(() => {
+            this.updateDatetimeError();
+          });
+
+          datetimeControl?.statusChanges.subscribe(() => {
+            this.updateDatetimeError();
+          });
+        } catch (err) {
+          console.error('🔥 ERRORE DENTRO SUBSCRIBE:', err);
         }
+      },
 
-        if (key === 'datetime') {
-          validators.push(bookingDateValidator(this.config));
-        }
-
-        group[key] = new FormControl('', {
-          nonNullable: true,
-          validators,
-        });
-      });
-
-      this.bookingForm = new FormGroup(group, {
-        validators: phoneGroupValidator,
-      });
-
-      const datetimeControl = this.bookingForm.get('datetime');
-      datetimeControl?.valueChanges.subscribe(() => {
-        this.updateDatetimeError();
-      });
-      datetimeControl?.statusChanges.subscribe(() => {
-        this.updateDatetimeError();
-      });
+      error: (err) => {
+        console.error('❌ ERRORE HTTP:', err);
+      },
     });
   }
   closeChat() {
