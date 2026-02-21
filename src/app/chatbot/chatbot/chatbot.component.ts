@@ -61,7 +61,7 @@ export class ChatbotComponent implements OnInit {
 
           // 👇 sicurezza su applyTheme
           if (this.config) {
-            //applyThemeColors(this.config);
+            applyThemeColors(this.config);
           }
 
           // 👇 sicurezza su responses

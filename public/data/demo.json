@@ -962,8 +962,6 @@
         }
     },
     "ui": {
-        "chatFabColor": "#111",
-        "toolTipColor": "#111",
         "chatBoxColor": "#fff",
         "chatHeaderColor": "#111",
         "chatHeaderText": "#fff",
