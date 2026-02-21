@@ -153,7 +153,7 @@
       iframe.style.height = '100dvh';
       iframe.style.borderRadius = '0';
       iframe.style.boxShadow = 'none';
-
+      iframe.style.zIndex = '2147483646';
       iframe.style.opacity = '1';
       iframe.style.transform = 'scale(1)';
       iframe.style.pointerEvents = 'auto';
