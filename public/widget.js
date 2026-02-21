@@ -109,6 +109,7 @@
 
   button.addEventListener('click', () => {
     if (!isOpen) {
+      // APRI
       iframe.style.opacity = '1';
       iframe.style.transform = 'scale(1)';
       iframe.style.pointerEvents = 'auto';
@@ -118,6 +119,13 @@
       isOpen = true;
 
       iframe.contentWindow.postMessage({ type: 'BOT_OPEN' }, '*');
+    } else {
+      // CHIUDI
+      iframe.style.opacity = '0';
+      iframe.style.transform = 'scale(0.8)';
+      iframe.style.pointerEvents = 'none';
+
+      isOpen = false;
     }
   });
   window.addEventListener('message', (event) => {
@@ -127,6 +135,7 @@
       iframe.style.opacity = '0';
       iframe.style.transform = 'scale(0.8)';
       iframe.style.pointerEvents = 'none';
+
       isOpen = false;
     }
   });
