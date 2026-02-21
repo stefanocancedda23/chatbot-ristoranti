@@ -352,10 +352,10 @@
     transform: translateX(-50%);
 
     /* leggermente sopra la FAB */
-    bottom: 100px;
+    bottom: calc(84px + 16px + env(safe-area-inset-bottom));
 
     /* dimensioni responsive vere */
-    width: 75dvw;
+    width: 85dvw;
     max-width: 380px;
 
     height: auto;
