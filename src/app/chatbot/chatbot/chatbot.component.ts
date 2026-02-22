@@ -394,7 +394,8 @@ export class ChatbotComponent implements OnInit {
       `👤 Nome: ${booking.name}\n` +
       `📞 Telefono: ${booking.prefix + booking.phone}\n` +
       `🕒 Data e ora: ${booking.datetime}\n` +
-      `📝 Note: ${booking.notes || 'Nessuna'}\n`;
+      `📝 Note: ${booking.notes || 'Nessuna'}\n
+       Il ristorante ti risponderà a breve per la conferma 😊\n`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
