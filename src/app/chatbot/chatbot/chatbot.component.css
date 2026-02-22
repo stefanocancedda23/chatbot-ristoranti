@@ -21,6 +21,22 @@
   font-family: 'Inter', sans-serif;
 }
 
+.chat-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999999;
+  /* alzalo */
+}
+
 .chat-header {
   background: var(--chat-header-color);
   color: var(--chat-header-text);
@@ -345,7 +361,7 @@
 @media (max-width: 720px) {
 
   .chatbox {
-    position: relative;
+    position: fixed;
     /* centrata orizzontalmente */
     left: 50%;
     transform: translateX(-50%);
@@ -362,21 +378,6 @@
     border-radius: 20px;
   }
 
-  .chat-overlay {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100dvh;
-
-    background: transparent;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 999999;
-    /* alzalo */
-  }
 
   .booking-form input {
     font-size: 13px;
