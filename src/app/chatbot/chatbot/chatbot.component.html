@@ -1,6 +1,6 @@
 
-<div class="chat-overlay" (click)="closeChat()">
-  <div class="chatbox" (click)="$event.stopPropagation()">
+<div class="chat-overlay" (click)="onOverlayClick($event)">
+  <div class="chatbox">
     <div class="chat-header">
       <span>{{ config.business.nomeAssistente }}</span>
 

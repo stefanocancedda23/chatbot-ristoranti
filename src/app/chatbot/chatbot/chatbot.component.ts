@@ -135,7 +135,13 @@ export class ChatbotComponent implements OnInit {
   closeChat() {
     window.parent.postMessage({ type: 'BOT_CLOSE' }, '*');
   }
+  onOverlayClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
 
+    if (target.classList.contains('chat-overlay')) {
+      this.closeChat();
+    }
+  }
   @ViewChild('chatBody') chatBody!: ElementRef<HTMLDivElement>;
   userInput = '';
 

@@ -345,7 +345,7 @@
 @media (max-width: 720px) {
 
   .chatbox {
-    position: fixed;
+    position: relative;
     /* centrata orizzontalmente */
     left: 50%;
     transform: translateX(-50%);
