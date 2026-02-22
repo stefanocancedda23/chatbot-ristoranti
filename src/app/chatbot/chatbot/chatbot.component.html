@@ -1,6 +1,6 @@
 
-
-  <div class="chatbox">
+<div class="chat-overlay" (click)="closeChat()">
+  <div class="chatbox" (click)="$event.stopPropagation()">
     <div class="chat-header">
       <span>{{ config.business.nomeAssistente }}</span>
 
@@ -186,4 +186,5 @@
       <input [(ngModel)]="userInput" placeholder="Scrivi un messaggio..." (keyup.enter)="sendMessage()" />
       <button (click)="sendMessage()">➤</button>
     </div>
+  </div>
   </div>

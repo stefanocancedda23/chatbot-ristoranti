@@ -202,4 +202,12 @@
       isOpen = false;
     }
   });
+  window.addEventListener('message', (event) => {
+    if (!event.data || !event.data.type) return;
+
+    if (event.data.type === 'BOT_DISABLED') {
+      wrapper.remove();
+      iframe.remove();
+    }
+  });
 })();

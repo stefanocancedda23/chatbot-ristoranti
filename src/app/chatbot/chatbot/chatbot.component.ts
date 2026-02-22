@@ -64,7 +64,9 @@ export class ChatbotComponent implements OnInit {
           if (this.config) {
             applyThemeColors(this.config);
           }
-
+          if (!this.config.business?.activated) {
+            window.parent.postMessage({ type: 'BOT_DISABLED' }, '*');
+          }
           // 👇 sicurezza su responses
           const welcome = this.config?.responses?.[this.lang]?.benvenuto ?? 'Ciao!';
 
