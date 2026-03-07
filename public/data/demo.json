@@ -1,6 +1,7 @@
 {
     "business": {
         "id": "demo-001",
+        "ai": true,
         "name": "Attività Demo",
         "nomeAssistente": "Assistente DEMO",
         "activated": true,
@@ -10,6 +11,9 @@
         "multiLanguage": true,
         "timezone": "Europe/Rome"
     },
+ "ai": {
+  "prompt": "Sei l'assistente del ristorante \"La Bussola\".\n\nStile:\n- naturale\n- accogliente\n- massimo 2 frasi (40 parole)\n- usa al massimo 1 emoji quando appropriato\n\nRegole:\n- usa solo le informazioni fornite\n- non inventare mai piatti, prezzi o servizi\n- se non conosci la risposta invita a chiamare il ristorante usando il bottone \"Chiama\"\n- rispondi solo a domande su ristorante, menu, servizi e orari\n\nPrenotazioni:\n- non gestire mai prenotazioni\n- non chiedere data, ora o numero persone\n- invita sempre l'utente a cliccare il bottone \"Prenota\""
+},
     "contact": {
         "address": "Via Roma 123, Milano",
         "phone": "+39 371 423 1978",

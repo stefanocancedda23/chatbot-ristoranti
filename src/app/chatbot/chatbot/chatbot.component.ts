@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { Aiservice } from '../../service/aiservice';
 
 @Component({
   selector: 'app-chatbot',
@@ -27,18 +28,20 @@ export class ChatbotComponent implements OnInit {
   config: any;
   datetimeErrorMessage: string | null = null;
   showQuickActions = true;
+  client: any
   constructor(
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
     private sanitizer: DomSanitizer,
     private fb: FormBuilder,
     private http: HttpClient,
+    private aiservice: Aiservice,
   ) {}
   private getClientFromUrl(): string {
     const params = new URLSearchParams(window.location.search);
     return params.get('client') || 'demo';
   }
-
+  private apiUrl = 'http://localhost:3000/chat';
   ngOnInit(): void {
     window.addEventListener('message', (event) => {
       this.zone.run(() => {
@@ -51,9 +54,9 @@ export class ChatbotComponent implements OnInit {
         }
       });
     });
-    const client = this.getClientFromUrl();
+    this.client = this.getClientFromUrl();
 
-    this.http.get<any>(`data/${client}.json`).subscribe({
+    this.http.get<any>(`data/${this.client}.json`).subscribe({
       next: (data) => {
         console.log('✅ JSON ARRIVATO:', data);
 
@@ -174,105 +177,126 @@ export class ChatbotComponent implements OnInit {
     this.bookingForm.get('prefix')?.setValue(p.code);
     this.showPrefixDropdown = false;
   }
-
-  sendMessage() {
+  sessionId = crypto.randomUUID();
+  async sendMessage() {
     if (!this.userInput.trim()) return;
-    this.cancelMethod();
+
     const userText = this.userInput;
-    this.showBookingForm = false;
-    this.showMethod = false;
-    // 1️⃣ Messaggio utente
-    this.messages.push({ sender: 'user', text: userText });
     this.userInput = '';
-    this.scrollToBottom();
+    this.messages.push({ sender: 'user', text: userText });
+    let botIndex: number | null = null;
+    if (this.config.business.ai) {
+      this.botTyping = true;
 
-    // 2️⃣ Typing
-    this.botTyping = true;
-    this.cdr.markForCheck();
+      this.botTyping = true;
+      try {
+        const response = await this.aiservice.sendMessage(userText, this.sessionId, this.lang, this.client).toPromise();
+        const botReply = response?.reply;
 
-    setTimeout(() => {
-      this.zone.run(() => {
-        this.botTyping = false;
-        let openBookingForm = false;
-        let botResponse = '';
-        let isHtml = false;
-        if (this.containsKeyword(userText, this.config.keywords[this.lang].insulti)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].insulti);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].prenotazione)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].prenotazione);
-          isHtml = true;
-          this.bookClick();
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].prezzi)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].prezzi);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].orari)) {
-          isHtml = true;
-          botResponse = this.randomItem(this.config.responses[this.lang].orari);
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].indirizzo)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].indirizzo);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].offerte)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].offerte);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].social)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].social);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].eventi)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].eventi);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].allergeni)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].allergeni);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].contatti)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].contatti);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].delivery)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].delivery);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].pagamenti)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].pagamenti);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].politiche)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].politiche);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].logistica)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].logistica);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].tempi)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].tempi);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].ringraziamenti)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].ringraziamenti);
-          isHtml = true;
-        } else if (this.containsKeyword(userText, this.config.keywords[this.lang].saluto)) {
-          botResponse = this.randomItem(this.config.responses[this.lang].saluto);
-          isHtml = true;
-        }
-        // ❓ FALLBACK
-        else {
-          isHtml = true;
-          botResponse = this.randomItem(this.config.responses[this.lang].fallback);
-        }
-
+        const botIndex = this.messages.push({ sender: 'bot', text: botReply!, isHtml: false }) - 1;
+        this.cdr.markForCheck(); // 🔑 forza update DOM
+        this.scrollToBottom();
+        this.scrollToBottom();
+      } catch (err) {
+        console.error(err);
         this.messages.push({
           sender: 'bot',
-          text: isHtml ? this.sanitizer.bypassSecurityTrustHtml(botResponse) : botResponse,
-          isHtml,
+          text: 'Si è verificato un errore. Riprova.',
+          isHtml: false,
         });
+      } finally {
+        this.botTyping = false;
+      }
+    } else {
+      this.botTyping = true;
+      this.cdr.markForCheck();
 
-        this.cdr.markForCheck();
-        this.scrollToBottom();
-        if (openBookingForm) {
-          setTimeout(() => {
-            this.zone.run(() => {
-              this.showBookingForm = true;
-              this.cdr.markForCheck();
-            });
-          }, 800); // leggero delay per dare effetto "typing"
-        }
-      });
-    }, 1500);
+      setTimeout(() => {
+        this.zone.run(() => {
+          this.botTyping = false;
+          let openBookingForm = false;
+          let botResponse = '';
+          let isHtml = false;
+          if (this.containsKeyword(userText, this.config.keywords[this.lang].insulti)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].insulti);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].prenotazione)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].prenotazione);
+            isHtml = true;
+            this.bookClick();
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].prezzi)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].prezzi);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].orari)) {
+            isHtml = true;
+            botResponse = this.randomItem(this.config.responses[this.lang].orari);
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].indirizzo)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].indirizzo);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].offerte)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].offerte);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].social)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].social);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].eventi)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].eventi);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].allergeni)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].allergeni);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].contatti)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].contatti);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].delivery)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].delivery);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].pagamenti)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].pagamenti);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].politiche)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].politiche);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].logistica)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].logistica);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].tempi)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].tempi);
+            isHtml = true;
+          } else if (
+            this.containsKeyword(userText, this.config.keywords[this.lang].ringraziamenti)
+          ) {
+            botResponse = this.randomItem(this.config.responses[this.lang].ringraziamenti);
+            isHtml = true;
+          } else if (this.containsKeyword(userText, this.config.keywords[this.lang].saluto)) {
+            botResponse = this.randomItem(this.config.responses[this.lang].saluto);
+            isHtml = true;
+          }
+          // ❓ FALLBACK
+          else {
+            isHtml = true;
+            botResponse = this.randomItem(this.config.responses[this.lang].fallback);
+          }
+
+          this.messages.push({
+            sender: 'bot',
+            text: isHtml ? this.sanitizer.bypassSecurityTrustHtml(botResponse) : botResponse,
+            isHtml,
+          });
+
+          this.cdr.markForCheck();
+          this.scrollToBottom();
+          if (openBookingForm) {
+            setTimeout(() => {
+              this.zone.run(() => {
+                this.showBookingForm = true;
+                this.cdr.markForCheck();
+              });
+            }, 800); // leggero delay per dare effetto "typing"
+          }
+        });
+      }, 1500);
+    }
   }
 
   private scrollToBottom() {
