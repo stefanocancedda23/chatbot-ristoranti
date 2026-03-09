@@ -21,10 +21,6 @@ export default async function handler(req, res) {
 
     const limit = 100000;
 
-    if (usedTokens > limit) {
-      return res.json({ reply: "Il chatbot ha raggiunto il limite mensile." });
-    }
-
     // ✅ Leggi JSON cliente
     const filePath = path.join(process.cwd(), "public/data", `${client}.json`);
     const clientConfig = JSON.parse(fs.readFileSync(filePath));
