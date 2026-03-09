@@ -1,12 +1,7 @@
 import OpenAI from "openai";
 import fs from "fs";
 import path from "path";
-import { Redis } from "@upstash/redis";
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN
-});
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -23,7 +18,7 @@ export default async function handler(req, res) {
     // ✅ Limite token
     const month = new Date().toISOString().slice(0, 7);
     const key = `tokens:${client}:${month}`;
-    const usedTokens = (await redis.get(key)) || 0;
+
     const limit = 100000;
 
     if (usedTokens > limit) {
@@ -55,9 +50,6 @@ export default async function handler(req, res) {
     history.push({ role: "assistant", content: reply });
     if (history.length > 6) history = history.slice(-6);
     conversations.set(sessionId, history);
-
-    // ✅ Salva token
-    await redis.incrby(key, completion.usage.total_tokens);
 
     res.json({ reply });
   } catch (err) {
