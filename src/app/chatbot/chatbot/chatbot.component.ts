@@ -39,7 +39,7 @@ export class ChatbotComponent implements OnInit {
   ) {}
   private getClientFromUrl(): string {
     const params = new URLSearchParams(window.location.search);
-    return params.get('client') || 'chatbot';
+    return params.get('client') || 'demo';
   }
   private apiUrl = 'http://localhost:3000/chat';
   ngOnInit(): void {
