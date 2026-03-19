@@ -56,7 +56,7 @@ export default async function handler(req, res) {
         },
         ...history,
       ],
-      max_output_tokens: 250,
+      max_output_tokens: 200,
     });
 
     const reply =
