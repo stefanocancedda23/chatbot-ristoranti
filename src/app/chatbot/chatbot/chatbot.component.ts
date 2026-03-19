@@ -24,7 +24,7 @@ import { Aiservice } from '../../service/aiservice';
 })
 export class ChatbotComponent implements OnInit {
   bookingForm!: FormGroup;
-  lang = 'it';
+  lang = '';
   config: any;
   datetimeErrorMessage: string | null = null;
   showQuickActions = true;
@@ -39,7 +39,7 @@ export class ChatbotComponent implements OnInit {
   ) {}
   private getClientFromUrl(): string {
     const params = new URLSearchParams(window.location.search);
-    return params.get('client') || 'demo';
+    return params.get('client') || 'chatbot';
   }
   private apiUrl = 'http://localhost:3000/chat';
   ngOnInit(): void {
@@ -58,12 +58,11 @@ export class ChatbotComponent implements OnInit {
 
     this.http.get<any>(`data/${this.client}.json`).subscribe({
       next: (data) => {
-        console.log('✅ JSON ARRIVATO:', data);
-
         try {
           this.config = data;
           this.cdr.detectChanges();
           // 👇 sicurezza su applyTheme
+          this.lang = this.config.business.language
           if (this.config) {
             applyThemeColors(this.config);
           }
