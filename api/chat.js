@@ -48,7 +48,7 @@ export default async function handler(req, res) {
       input: [
         {
           role: 'system',
-          content: `Parla solo in lingua: ${lang === 'it' ? 'Italiano' : 'English'}`,
+          content: `Parla solo in lingua: ${lang === 'it' ? 'Italiano' : 'English'}, non mischiare piu lingue MAI`,
         },
         {
           role: 'system',
