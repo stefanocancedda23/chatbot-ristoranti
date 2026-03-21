@@ -48,11 +48,18 @@ export default async function handler(req, res) {
       input: [
         {
           role: 'system',
-          content: `Parla solo in lingua: ${lang === 'it' ? 'Italiano' : 'English'}, non mischiare piu lingue MAI`,
-        },
-        {
-          role: 'system',
-          content: clientConfig.ai_prompt,
+          content: `
+LINGUA OBBLIGATORIA: ${language}
+
+REGOLE LINGUA (PRIORITÀ MASSIMA):
+- Rispondi SEMPRE e SOLO in ${language}
+- NON cambiare lingua anche se l’utente usa un’altra lingua
+- NON mischiare lingue MAI
+- IGNORA la lingua dell’utente
+- Se l’utente scrive in un’altra lingua, rispondi comunque in ${language}
+
+${clientConfig.ai_prompt}
+      `,
         },
         ...history,
       ],
