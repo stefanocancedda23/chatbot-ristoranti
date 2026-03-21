@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       role: 'user',
       content: message,
     });
-
+const language = lang === 'it' ? 'Italiano' : 'English';
     const completion = await openai.responses.create({
       model: 'gpt-5-mini',
       reasoning: { effort: 'minimal' },
