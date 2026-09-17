@@ -14,7 +14,7 @@
     "contact": {
         "address": "Chalet Bielmonte",
         "phone": "+39 015 744126",
-        "email": "info@attivitademo.it",
+        "email": "info@chaletbielmonte.it",
         "mapsUrl": "https://maps.app.goo.gl/6fgaGgE8dKat8hG8A?g_st=aw",
         "website": "https://chaletbielmonte.it/"
     },
@@ -146,7 +146,6 @@
             "orari": [
                 "🕒 I nostri orari di apertura\n\nLunedì – Martedì: ❌ chiuso\nMercoledì – Venerdì: 09:00 – 17:00\nSabato: 08:30 – 22:00\nDomenica: 08:30 – 18:00\n\n",
                 "⏰ Ecco quando siamo aperti:\n\nLunedì – Martedì → chiuso\nMercoledì – Venerdì → 09:00 – 17:00\nSabato → 08:30 – 22:00\nDomenica → 08:30 – 18:00\n\n",
-                "📍 Ecco i nostri orari di apertura:\n\n🔴 Lunedì – Martedì: chiuso\n🟢 Mercoledì – Venerdì: 09:00 – 17:00\n🟡 Sabato: 08:30 – 22:00\n🟢 Domenica: 08:30 – 18:00\n\n",
                 "😄 Ehi! Ecco quando puoi venire a trovarci:\n\n❌ Lunedì – Martedì: chiuso\n🕘 Mercoledì – Venerdì: 09:00 – 17:00\n🕣 Sabato: 08:30 – 22:00\n🕣 Domenica: 08:30 – 18:00\n\n 🍕",
                 "👀 Ti scrivo subito i nostri orari:\n\nLunedì – Martedì: chiuso\nMercoledì – Venerdì: 09:00 – 17:00\nSabato: 08:30 – 22:00\nDomenica: 08:30 – 18:00\n\n",
                 "🍕 Ecco quando siamo aperti per le tue pizze preferite:\n\nLunedì – Martedì: ❌ chiuso\nMercoledì – Venerdì: 09:00 – 17:00\nSabato: 08:30 – 22:00\nDomenica: 08:30 – 18:00\n\n"
@@ -221,17 +220,17 @@
         }
     },
     "ui": {
-        "chatBoxColor": "#FFFFFF",
-        "chatHeaderColor": "#304A3A",
-        "chatHeaderText": "#FFFFFF",
-        "chatBackground": "#F5F3EE",
-        "messageBot": "#E8EDE7",
-        "messageBotText": "#26352B",
-        "messageUser": "#6B8068",
-        "messageUserText": "#FFFFFF",
-        "typingColor": "#E8EDE7",
-        "dotsColor": "#718070",
-        "quickActionsBackground": "#FFFFFF",
+        "chatBoxColor": "#fff",
+        "chatHeaderColor": "#111",
+        "chatHeaderText": "#fff",
+        "chatBackground": "#f7f7f7",
+        "messageBot": "#eaeaea",
+        "messageBotText": "#000",
+        "messageUser": "#111",
+        "messageUserText": "#fff",
+        "typingColor": "#eaeaea",
+        "dotsColor": "#999",
+        "quickActionsBackground": "#fff",
         "showQuickActions": true,
         "showTooltip": true
     },
