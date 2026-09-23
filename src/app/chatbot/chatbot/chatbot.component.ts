@@ -385,7 +385,6 @@ export class ChatbotComponent implements OnInit {
   bookClick1() {
     if (this.config.business.prenotazioneAutomatica == true) {
       //qua integra un metodo/codice per far effettivamente comparire il contenuto delle foto
-      this.showQuickActions = false;
 
       // Definisci l'URL della nuova pagina (può essere una rotta della stessa app o un sito esterno)
       // Passiamo la lingua corrente nell'URL per mantenerla sincronizzata
