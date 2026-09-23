@@ -28,7 +28,7 @@ export class ChatbotComponent implements OnInit {
   config: any;
   datetimeErrorMessage: string | null = null;
   showQuickActions = true;
-  client: any
+  client: any;
   constructor(
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
@@ -62,7 +62,7 @@ export class ChatbotComponent implements OnInit {
           this.config = data;
           this.cdr.detectChanges();
           // 👇 sicurezza su applyTheme
-          this.lang = this.config.business.language
+          this.lang = this.config.business.language;
           if (this.config) {
             applyThemeColors(this.config);
           }
@@ -189,7 +189,9 @@ export class ChatbotComponent implements OnInit {
 
       this.botTyping = true;
       try {
-        const response = await this.aiservice.sendMessage(userText, this.sessionId, this.lang, this.client).toPromise();
+        const response = await this.aiservice
+          .sendMessage(userText, this.sessionId, this.lang, this.client)
+          .toPromise();
         const botReply = response?.reply;
 
         const botIndex = this.messages.push({ sender: 'bot', text: botReply!, isHtml: false }) - 1;
@@ -381,13 +383,25 @@ export class ChatbotComponent implements OnInit {
   }
 
   bookClick1() {
-    this.messages.push({
-      text: this.randomItem(this.config.responses[this.lang].prenotazione),
-      sender: 'bot',
-      isHtml: true,
-    });
-    this.bookClick();
-    this.scrollToBottom();
+    if (this.config.prenotazioneAutomatica == true) {
+      //qua integra un metodo/codice per far effettivamente comparire il contenuto delle foto
+      this.showQuickActions = false;
+
+      // Definisci l'URL della nuova pagina (può essere una rotta della stessa app o un sito esterno)
+      // Passiamo la lingua corrente nell'URL per mantenerla sincronizzata
+      const urlPrenotazione = `/prenota?lang=${this.lang}`;
+
+      // Apre letteralmente una nuova scheda del browser
+      window.open(urlPrenotazione, '_blank');
+    } else {
+      this.messages.push({
+        text: this.randomItem(this.config.responses[this.lang].prenotazione),
+        sender: 'bot',
+        isHtml: true,
+      });
+      this.bookClick();
+      this.scrollToBottom();
+    }
   }
   bookClick() {
     this.showMethod = true;

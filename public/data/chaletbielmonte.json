@@ -1,0 +1,301 @@
+{
+    "business": {
+        "id": "demo-001",
+        "ai": true,
+        "name": "Attività Demo",
+        "nomeAssistente": "LocalBot AI",
+        "activated": true,
+        "type": "ristorante",
+        "description": "Attività demo per chatbot",
+        "language": "en",
+        "multiLanguage": true,
+        "timezone": "Europe/Rome"
+    },
+    "contact": {
+        "address": "Via Roma 123, Milano",
+        "phone": "+39 371 423 1978",
+        "email": "info@attivitademo.it",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano",
+        "website": "https://www.attivitademo.it"
+    },
+    "openingHours": {
+        "monday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 12,
+                    "openM": 0,
+                    "closeM": 0
+                },
+                {
+                    "openH": 18,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "tuesday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 12,
+                    "openM": 0,
+                    "closeM": 0
+                },
+                {
+                    "openH": 18,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "wednesday": {
+            "closed": true
+        },
+        "thursday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 22,
+                    "openM": 0,
+                    "closeM": 0
+                }
+            ]
+        },
+        "friday": {
+            "slots": [
+                {
+                    "openH": 9,
+                    "closeH": 23,
+                    "openM": 0,
+                    "closeM": 30
+                }
+            ]
+        },
+        "saturday": {
+            "slots": [
+                {
+                    "openH": 10,
+                    "closeH": 23,
+                    "openM": 0,
+                    "closeM": 30
+                }
+            ]
+        },
+        "sunday": {
+            "closed": true
+        }
+    },
+    "booking": {
+        "enabled": true,
+        "methods": [
+            {
+                "type": "thefork",
+                "label": "TheFork",
+                "enabled": true,
+                "url": "https://www.thefork.it/ristorante/nome-ristorante"
+            },
+            {
+                "type": "whatsapp",
+                "label": "WhatsApp",
+                "enabled": true
+            },
+            {
+                "type": "phone",
+                "label": "chiama",
+                "enabled": true
+            }
+        ],
+        "whatsappNumber": "+39 371 423 1978",
+        "fields": {
+            "name": {
+                "required": true
+            },
+            "phone": {
+                "required": true
+            },
+            "datetime": {
+                "required": true
+            },
+            "notes": {
+                "required": false
+            }
+        },
+        "rules": {
+            "minAdvanceMinutes": 30,
+            "maxDaysInAdvance": 30
+        }
+    },
+    "features": {
+        "delivery": true,
+        "takeaway": true,
+        "onlinePayments": false
+    },
+    "dietaryOptions": {
+        "vegetarian": true,
+        "vegan": false,
+        "glutenFree": true
+    },
+    "payments": {
+        "cash": true,
+        "creditCard": true,
+        "debitCard": true,
+        "satispay": true,
+        "paypal": false
+    },
+    "menu": {
+        "hasMenu": true,
+        "menuUrl": "/menu.pdf",
+        "priceFrom": 6
+    },
+    "responses": {
+        "it": {
+            "benvenuto": [
+                "👋 Ciao, sono LocalBot AI.\nTi spiegherò nel dettaglio come funziono e come posso essere integrato nel sito web del tuo locale.\nSono una replica di ciò che potresti avere nel tuo sito: completamente personalizzato con colori, risposte, orari, tono e informazioni specifiche del tuo ristorante.\nLe informazioni mostrate in questa chat (orari, menu, prenotazioni, contatti, posizione) sono simulate e hanno solo scopo dimostrativo.\nI prezzi dei servizi, i costi e i limiti del chatbot sono invece reali.\nChiedimi pure qualsiasi cosa 😊"
+            ],
+            "orari": [
+                "🕒 I nostri orari di apertura\n\nLunedì – Venerdì: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: ❌ chiuso\n\n",
+                "⏰ Ecco quando siamo aperti:\n\nLun–Ven → 09:00 – 20:00\nSabato → 10:00 – 18:00\nDomenica → chiuso\n\n",
+                "📍 Ti dico subito i nostri orari:\n\n🟢 Lun–Ven: 09:00 – 20:00\n🟡 Sabato: 10:00 – 18:00\n🔴 Domenica: chiuso\n\n",
+                "😄 Ehi! Ecco quando puoi venirci a trovare:\n\n🕘 Lun–Ven: 09:00 – 20:00\n🕙 Sabato: 10:00 – 18:00\n❌ Domenica: chiuso\n\n 🍕",
+                "👀 Ti scrivo subito i nostri orari:\n\nLun–Ven: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: chiuso\n\n",
+                "🍕 Ecco quando siamo aperti per le tue pizze preferite:\n\nLun–Ven: 09:00 – 20:00\nSabato: 10:00 – 18:00\nDomenica: ❌ chiuso\n\n"
+            ],
+            "indirizzo": [
+                "📍 Ci trovi qui:\n\nVia Roma 123, Milano\n\n🗺️ Apri direttamente su Maps:\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Apri su Google Maps</a>",
+                "📌 Ecco dove siamo:\n\nVia Roma 123 – Milano\n\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Indicazioni su Google Maps</a>",
+                "🚗 Ci trovi in questa posizione:\n\nVia Roma 123, Milano\n\n🧭 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Apri navigatore</a>"
+            ],
+            "prenotazione": [
+                "📅 Perfetto! scegli pure un metodo per prenotare:",
+                "🍕 Ottimo, vediamo di riservarti un tavolo! scegli un metodo per prenotare:",
+                "👍 Prenotazione semplice e veloce: scegli uno dei seguenti metodi:"
+            ]
+        },
+        "en": {
+            "benvenuto": [
+                "👋 Hi, I’m LocalBot AI.\nI’ll explain how I work and how I can be integrated into your restaurant’s website.\nI’m a replica of what you could have on your site: fully customized with your brand colors, responses, opening hours, tone, and restaurant-specific information.\nThe information shown in this chat (opening hours, menu, reservations, contact details, location) is simulated and for demonstration purposes only.\nService pricing, costs, and chatbot limitations are real.\nFeel free to ask me anything 😊"
+            ],
+            "orari": [
+                "🕒 Our opening hours\n\nMonday – Friday: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: ❌ Closed\n\n",
+                "⏰ Here’s when we’re open:\n\nMon–Fri → 09:00 – 20:00\nSaturday → 10:00 – 18:00\nSunday → Closed\n\n",
+                "📍 Here are our opening hours:\n\n🟢 Mon–Fri: 09:00 – 20:00\n🟡 Saturday: 10:00 – 18:00\n🔴 Sunday: Closed\n\n",
+                "😄 Hey! Here’s when you can visit us:\n\n🕘 Mon–Fri: 09:00 – 20:00\n🕙 Saturday: 10:00 – 18:00\n❌ Sunday: Closed\n\n 🍕",
+                "👀 Here are our opening hours:\n\nMon–Fri: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: Closed\n\n",
+                "🍕 Here’s when we’re open for your favorite pizzas:\n\nMon–Fri: 09:00 – 20:00\nSaturday: 10:00 – 18:00\nSunday: ❌ Closed\n\n"
+            ],
+            "indirizzo": [
+                "📍 You can find us here:\n\nVia Roma 123, Milan\n\n🗺️ Open directly in Maps:\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Open in Google Maps</a>",
+                "📌 Here’s where we are:\n\nVia Roma 123 – Milan\n\n👉 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Get directions on Google Maps</a>",
+                "🚗 You can find us at:\n\nVia Roma 123, Milan\n\n🧭 <a href=\"https://www.google.com/maps/search/?api=1&query=Via+Roma+123,+Milano\" target=\"_blank\">Open navigation</a>"
+            ],
+            "prenotazione": [
+                "📅 Perfect! Please choose a method to book:",
+                "🍕 Great, let’s reserve a table for you! Choose a booking method:",
+                "👍 Quick and easy reservation: select one of the following methods:"
+            ]
+        }
+    },
+    "errors": {
+        "it": {
+            "required": "Seleziona data e ora",
+            "pastDate": "La data non può essere nel passato",
+            "tooSoon": "Le prenotazioni devono essere almeno {{minutes}} minuti in anticipo",
+            "tooFar": "Puoi prenotare massimo {{days}} giorni in anticipo",
+            "closedToday": {
+                "sunday": "Siamo chiusi la domenica",
+                "default": "Giorno chiuso"
+            },
+            "closedByException": "Giorno chiuso: {{reason}}",
+            "outsideHours": "Prenotazioni disponibili negli orari: {{slots}}",
+            "numNonValido": "Numero non valido. Ricorda di includere il prefisso internazionale (es. +39 347 1234567)",
+            "numero": "Inserisci il tuo numero di telefono",
+            "nome": "Inserisci il nome e cognome",
+            "note": "Inserisci il numero di persone"
+        },
+        "en": {
+            "required": "Please select a date and time",
+            "pastDate": "The selected date cannot be in the past",
+            "tooSoon": "Reservations must be made at least {{minutes}} minutes in advance",
+            "tooFar": "You can book up to {{days}} days in advance",
+            "closedToday": {
+                "sunday": "We are closed on Sundays",
+                "default": "Closed on this day"
+            },
+            "closedByException": "Closed on this day: {{reason}}",
+            "outsideHours": "Reservations are available during these hours: {{slots}}",
+            "numNonValido": "Invalid phone number. Please include the international prefix (e.g. +39 347 1234567)",
+            "numero": "Enter your phone number",
+            "nome": "Enter your first and last name",
+            "note": "Enter the number of guests"
+        }
+    },
+    "ui": {
+        "chatBoxColor": "#FFFFFF",
+        "chatHeaderColor": "#42A5F5",
+        "chatHeaderText": "#FFFFFF",
+        "chatBackground": "#F5F9FF",
+        "messageBot": "#E3F2FD",
+        "messageBotText": "#1A2A3A",
+        "messageUser": "#64B5F6",
+        "messageUserText": "#FFFFFF",
+        "typingColor": "#E3F2FD",
+        "dotsColor": "#90A4AE",
+        "quickActionsBackground": "#FFFFFF",
+        "showQuickActions": true,
+        "showTooltip": true
+    },
+    "frasi": {
+        "it": {
+            "tel": "📞 Chiama direttamente:",
+            "bookConfirm": "Abbiamo inviato la tua richiesta di prenotazione al ristorante. Ti confermeranno a breve 😊",
+            "prenota": "Prenota",
+            "orari": "Orari",
+            "posizione": "Posizione",
+            "chiama": "Chiama",
+            "nome": "Nome e Cognome",
+            "numero": "Numero di telefono",
+            "data": "Data e ora",
+            "note": "Note",
+            "annulla": "Annulla",
+            "invia": "Invia prenotazione"
+        },
+        "en": {
+            "tel": "📞 Call directly:",
+            "bookConfirm": "We've sent your reservation request to the restaurant. They'll confirm shortly 😊",
+            "prenota": "Book",
+            "orari": "Hours",
+            "posizione": "Location",
+            "chiama": "Call",
+            "nome": "First and Last Name",
+            "numero": "Phone Number",
+            "data": "Date and Time",
+            "note": "Notes",
+            "annulla": "Cancel",
+            "invia": "Send Booking Request"
+        }
+    },
+    "legal": {
+        "privacyUrl": "/privacy-policy.html",
+        "termsUrl": "/terms.html"
+    },
+    "exceptions": [
+        {
+            "date": "2026-12-25",
+            "closed": true,
+            "reason": "Natale"
+        },
+        {
+            "date": "2026-02-12",
+            "closed": true,
+            "reason": "Chiusura straordinaria"
+        },
+        {
+            "date": "2026-08-15",
+            "closed": true,
+            "reason": "Ferragosto"
+        }
+    ]
+}

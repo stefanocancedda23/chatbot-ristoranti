@@ -9,7 +9,8 @@
         "description": "Attività demo per chatbot",
         "language": "it",
         "multiLanguage": true,
-        "timezone": "Europe/Rome"
+        "timezone": "Europe/Rome",
+        "prenotazioneAutomatica": true
     },
     "contact": {
         "address": "Chalet Bielmonte",

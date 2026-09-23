@@ -1,0 +1,178 @@
+<div class="booking-full-page">
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-content">
+      <img src="assets/logo-ristorante.png" alt="Logo Ristorante" class="restaurant-logo" />
+
+      <div class="header-lang">
+        <span> {{ currentLang === 'it' ? 'IT' : 'EN' }} ▾ </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENITORE PRENOTAZIONE -->
+  <main class="booking-window">
+    <h1 class="brand-title">Piccolo Lago</h1>
+
+    <h2 class="section-title">Dettagli della prenotazione</h2>
+
+    <!-- PROGRESS BAR -->
+    <div class="step-progress-bar">
+      <div
+        class="circle-step"
+        [class.active]="currentStep >= 1"
+        [class.completed]="currentStep > 1"
+      >
+        1
+      </div>
+
+      <div class="progress-line" [class.active]="currentStep > 1"></div>
+
+      <div
+        class="circle-step"
+        [class.active]="currentStep >= 2"
+        [class.completed]="currentStep > 2"
+      >
+        2
+      </div>
+
+      <div class="progress-line" [class.active]="currentStep > 2"></div>
+
+      <div
+        class="circle-step"
+        [class.active]="currentStep >= 3"
+        [class.completed]="currentStep > 3"
+      >
+        3
+      </div>
+    </div>
+
+    <!-- RIEPILOGO -->
+    <div class="choices-summary-bar" *ngIf="selectedDate">
+      <div class="summary-chip" (click)="goToStep(1)">
+        📅 {{ selectedDate | date: 'EEE dd MMM' }}
+      </div>
+
+      <div class="summary-chip" (click)="goToStep(2)" *ngIf="currentStep > 2 && selectedGuests">
+        👤 {{ selectedGuests }} Persone
+      </div>
+
+      <div class="summary-chip" (click)="goToStep(3)" *ngIf="currentStep > 3 && selectedTime">
+        🕒 {{ selectedTime }}
+      </div>
+    </div>
+
+    <!-- TITOLO STEP -->
+    <div class="step-header-text">
+      <h3 *ngIf="currentStep === 1">Scegli una data (Settembre 2026)</h3>
+
+      <h3 *ngIf="currentStep === 2">Seleziona il numero di persone</h3>
+
+      <h3 *ngIf="currentStep === 3">Scegli un orario disponibile</h3>
+
+      <h3 *ngIf="currentStep === 4">Inserisci i tuoi dati personali</h3>
+    </div>
+
+    <!-- ================= STEP 1 ================= -->
+
+    <div *ngIf="currentStep === 1" class="step-view">
+      <div class="calendar-layout">
+        <button
+          *ngFor="let day of calendarDays"
+          [disabled]="!day.available"
+          [class.selected]="selectedDate === day.date"
+          (click)="onDateSelect(day.date)"
+          class="day-cell"
+        >
+          {{ day.number }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= STEP 2 ================= -->
+
+    <div *ngIf="currentStep === 2" class="step-view">
+      <div class="options-grid">
+        <button
+          *ngFor="let guest of guestOptions"
+          (click)="onGuestsSelect(guest)"
+          class="grid-button"
+        >
+          {{ guest }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= STEP 3 ================= -->
+
+    <div *ngIf="currentStep === 3" class="step-view">
+      <div class="options-grid">
+        <button *ngFor="let time of timeOptions" (click)="onTimeSelect(time)" class="grid-button">
+          {{ time }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= STEP 4 ================= -->
+
+    <div *ngIf="currentStep === 4" class="step-view">
+      <form [formGroup]="userDataForm" (ngSubmit)="onFinalSubmit()" class="booking-html-form">
+        <!-- SALUTAZIONE -->
+        <div class="radio-group">
+          <label>
+            <input type="radio" formControlName="salutation" value="Sig" />
+
+            Sig.
+          </label>
+
+          <label>
+            <input type="radio" formControlName="salutation" value="Sig.ra" />
+
+            Sig.ra
+          </label>
+
+          <label>
+            <input type="radio" formControlName="salutation" value="Mx" />
+
+            Mx.
+          </label>
+        </div>
+
+        <!-- NOME -->
+        <div class="input-field">
+          <label> Nome * </label>
+
+          <input type="text" formControlName="firstName" placeholder="Inserisci il tuo nome" />
+        </div>
+
+        <!-- COGNOME -->
+        <div class="input-field">
+          <label> Cognome * </label>
+
+          <input type="text" formControlName="lastName" placeholder="Inserisci il tuo cognome" />
+        </div>
+
+        <!-- EMAIL -->
+        <div class="input-field">
+          <label> Email * </label>
+
+          <input type="email" formControlName="email" placeholder="esempio@dominio.it" />
+        </div>
+
+        <!-- TELEFONO -->
+        <div class="input-field">
+          <label> Telefono * </label>
+
+          <input type="tel" formControlName="phoneNumber" placeholder="3123456789" />
+        </div>
+
+        <!-- CONFERMA -->
+        <div class="form-actions">
+          <button type="submit" class="submit-booking-btn" [disabled]="userDataForm.invalid">
+            CONFERMA PRENOTAZIONE
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
