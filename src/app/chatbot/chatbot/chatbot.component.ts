@@ -383,7 +383,7 @@ export class ChatbotComponent implements OnInit {
   }
 
   bookClick1() {
-    if (this.config.prenotazioneAutomatica == true) {
+    if (this.config.business.prenotazioneAutomatica == true) {
       //qua integra un metodo/codice per far effettivamente comparire il contenuto delle foto
       this.showQuickActions = false;
 
