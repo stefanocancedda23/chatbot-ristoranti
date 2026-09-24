@@ -10,7 +10,7 @@
         "language": "it",
         "multiLanguage": true,
         "timezone": "Europe/Rome",
-        "prenotazioneAutomatica": false
+        "prenotazioneAutomatica": true
     },
     "contact": {
         "address": "Chalet Bielmonte",
